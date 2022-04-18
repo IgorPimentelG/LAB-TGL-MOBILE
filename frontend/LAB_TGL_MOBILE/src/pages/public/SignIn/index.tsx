@@ -1,11 +1,17 @@
-import { Logo } from "@components/UI";
-import { View, SafeAreaView } from "react-native";
+import { Logo, Title, Input } from "@components/UI";
+import { Card } from "@components/Layout";
+import { RootContainer } from './styles';
 
 const SignIn = () => {
     return(
-        <View style={{ marginTop: 50 }}>
+        <RootContainer>
             <Logo/>
-        </View>
+            <Title>Authentication</Title>
+            <Card>
+               <Input/>
+               <Input/>
+            </Card>
+        </RootContainer>
     );
 }
 
