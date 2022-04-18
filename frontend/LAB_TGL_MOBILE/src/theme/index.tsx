@@ -1,8 +1,9 @@
 import { ThemeProvider } from 'styled-components';
+import { IConfigTheme } from '@shared/model/interfaces/theme';
 
 const Theme: React.FC<{ children: any }> = ({ children }) => {
     
-    const configTheme = {
+    const configTheme: IConfigTheme = {
         colors: {
             primary: '#B5C401',
             text: '#707070',
