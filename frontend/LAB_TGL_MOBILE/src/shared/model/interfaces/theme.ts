@@ -7,5 +7,6 @@ export interface IConfigTheme {
         backgroundColor: string;
         borderCard: string;
         borderInput: string;
+        error: string;
     }
 }

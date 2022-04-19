@@ -10,6 +10,7 @@ declare module 'styled-components' {
             backgroundColor: string;
             borderCard: string;
             borderInput: string;
+            error: string;
         }
     }
 }

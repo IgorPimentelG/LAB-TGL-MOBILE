@@ -1,8 +1,11 @@
-import Form from "@components/Form";
-import { NavButtonType } from "@shared/model/enums/form";
-import { ResetPasswordProps } from "@shared/model/types/navigation";
+import Form from '@components/Form';
+import { NavButtonType } from '@shared/model/enums/form';
+import { ResetPasswordProps } from '@shared/model/types/navigation';
+import { useForm } from 'react-hook-form';
 
 const ResetPassword = ({ navigation }: ResetPasswordProps) => {
+
+    const { control, handleSubmit, formState: { errors }} = useForm();
 
     const onSubmit = () => {
 
@@ -16,13 +19,16 @@ const ResetPassword = ({ navigation }: ResetPasswordProps) => {
         <Form configForm={{
             title: 'Reset password',
             inputs: [
-                {placeholder: 'Email'},
+                { 
+                    params: { placeholder: 'Email' }, 
+                    controller: { name: 'email', hasError: !!errors.email ,control }
+                },
             ],
             primaryButton: {
                 label: 'send link',
                 type: NavButtonType.PRIMARY, 
                 iconArrowRight: true,
-                onPressHandler: onSubmit
+                onPressHandler: handleSubmit(onSubmit)
             },
             secondaryButton: {
                 label: 'back',

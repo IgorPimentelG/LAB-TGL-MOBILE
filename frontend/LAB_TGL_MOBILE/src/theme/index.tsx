@@ -11,7 +11,8 @@ const Theme: React.FC<{ children: any }> = ({ children }) => {
             placeholder: '#9D9D9D',
             backgroundColor: '#F7F7F7',
             borderCard: '#DDDDDD',
-            borderInput: '#EBEBEB'
+            borderInput: '#EBEBEB',
+            error: '#C30'
         }
     }
 

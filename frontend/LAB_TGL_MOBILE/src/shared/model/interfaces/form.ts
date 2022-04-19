@@ -2,8 +2,12 @@ import { Control } from 'react-hook-form';
 import { NavButtonType } from './../enums/form';
 
 export interface IConfigInput {
-    placeholder: string;
-    secureTextEntry?: boolean;
+    controller: IConfigController;
+    index?: number;
+    params: {
+        placeholder: string;
+        secureTextEntry?: boolean;
+    }
 }
 
 export interface IConfigNavButton {
@@ -19,9 +23,10 @@ export interface IConfigLink {
     onPress: () => void;
 }
 
-export interface IConfigControl {
+export interface IConfigController {
     name: string;
     control: Control;
+    hasError: boolean;
 }
 
 export interface IForm {

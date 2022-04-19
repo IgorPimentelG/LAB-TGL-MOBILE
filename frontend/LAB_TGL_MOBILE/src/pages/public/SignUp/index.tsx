@@ -1,36 +1,48 @@
-import Form from "@components/Form";
-import { NavButtonType } from "@shared/model/enums/form";
-import { SignUpProps } from "@shared/model/types/navigation";
+import Form from '@components/Form';
+import { NavButtonType } from '@shared/model/enums/form';
+import { SignUpProps } from '@shared/model/types/navigation';
+import { useForm } from 'react-hook-form';
 
 const SignUp = ({ navigation }: SignUpProps) => {
 
-    const onSubmitHandler = () => {
+    const { control, handleSubmit, formState: { errors }} = useForm();
+
+    const onSubmit = () => {
 
     }
 
-    const onGoBackHandedler = () => {
+    const onGoBack = () => {
         navigation.navigate('SignIn');
     }
 
     return(
         <Form configForm={{
             title: 'Registration',
-            inputs: [
-                {placeholder: 'Name'},
-                {placeholder: 'Email'},
-                {placeholder: 'Password', secureTextEntry: true}
+            inputs: [               
+                { 
+                    params: { placeholder: 'name' }, 
+                    controller: { name: 'name', hasError: !!errors.name ,control }
+                },
+                { 
+                    params: { placeholder: 'email' }, 
+                    controller: { name: 'email', hasError: !!errors.email ,control }
+                },
+                {
+                    params: { placeholder: 'Password', secureTextEntry: true },
+                    controller: { name: 'password', hasError: !!errors.password, control }
+                }
             ],
             primaryButton: {
                 label: 'register',
                 type: NavButtonType.PRIMARY, 
                 iconArrowRight: true,
-                onPressHandler: onSubmitHandler
+                onPressHandler: handleSubmit(onSubmit)
             },
             secondaryButton: {
                 label: 'back',
                 type: NavButtonType.SECONDARY, 
                 iconArrowLeft: true,
-                onPressHandler: onGoBackHandedler
+                onPressHandler: onGoBack
             }
         }}/>
     );

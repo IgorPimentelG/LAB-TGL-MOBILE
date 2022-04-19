@@ -14,7 +14,7 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
                 </ContainerTitle>
                 <Card>
                     {configForm.inputs.map((configInput, index) => (
-                        <Input key={index} configInput={configInput}/>
+                        <Input key={index} configInput={{...configInput, index: index}}/>
                     ))}
 
                     {configForm.link && (

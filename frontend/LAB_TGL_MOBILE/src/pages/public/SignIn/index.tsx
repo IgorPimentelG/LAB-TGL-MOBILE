@@ -21,17 +21,23 @@ const SignIn = ({ navigation } : SignInProps) => {
 
     return(
         <Form configForm={{
-            title: 'Authentication',
+            title: 'Authentication',           
             inputs: [
-                {placeholder: 'Email'},
-                {placeholder: 'Password', secureTextEntry: true}
+                { 
+                    params: { placeholder: 'Email' }, 
+                    controller: { name: 'email', hasError: !!errors.email ,control }
+                },
+                {
+                    params: { placeholder: 'Password', secureTextEntry: true },
+                    controller: { name: 'password', hasError: !!errors.password, control }
+                }
             ],
             link: { label: 'I forgot my password', onPress: onResetPassword },
             primaryButton: {
                 label: 'log in',
                 type: NavButtonType.PRIMARY, 
                 iconArrowRight: true,
-                onPressHandler: onSubmit
+                onPressHandler: handleSubmit(onSubmit)
             },
             secondaryButton: {
                 label: 'sign up',
