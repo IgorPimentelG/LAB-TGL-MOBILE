@@ -1,4 +1,4 @@
-import { Title, Logo, Input, Link, NavButton } from '@components/UI';
+import { Title, Input, Link, NavButton, TextMarketing } from '@components/UI';
 import { Card } from '@components/Layout';
 import { ContainerLink, ContainerTitle, RootContainer } from './styles';
 import { IForm } from '@shared/model/interfaces/form';
@@ -8,7 +8,7 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <RootContainer>
-                <Logo/>
+                <TextMarketing/>
                 <ContainerTitle>
                     <Title>{configForm.title}</Title>
                 </ContainerTitle>

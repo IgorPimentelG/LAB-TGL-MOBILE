@@ -1,25 +1,13 @@
 import styled from 'styled-components/native';
 
-export const Container = styled.View`
-    justify-content: center;
-    align-items: center;
+export const Line = styled.View`
+    border: 5px solid ${({theme}) => theme.colors.primary};
+    border-radius: 50px;
 `;
 
-const TextBase = styled.Text`
+export const Label = styled.Text`
     font-weight: bold;
-    text-align: center;
     font-style: italic;
+    font-size: 36px;
     color: ${({theme}) => theme.colors.text};
-`;
-
-export const Text = styled(TextBase)`
-    font-size: 28px;
-`;
-
-export const TextHighlighted = styled(TextBase)`   
-    margin: 10px 0 5px 0;
-    padding: 5px 30px;
-    color: #FFF;
-    background-color: ${({theme}) => theme.colors.primary};
-    border-radius: 100px;
 `;

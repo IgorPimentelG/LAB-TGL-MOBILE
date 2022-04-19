@@ -1,13 +1,13 @@
-import { Container, Text, TextHighlighted } from './styles';
+import { View } from 'react-native';
+import { Label, Line } from './styles';
 
 const Logo = () => {
-   return(
-        <Container>
-            <Text>{'The \nGreatest \nApp'}</Text>
-            <TextHighlighted>for</TextHighlighted>
-            <Text>LOTTERY</Text>
-        </Container>
-   );
+    return(
+        <View>
+            <Label>TGL</Label>
+            <Line/>
+        </View>
+    );
 }
 
 export default Logo;
