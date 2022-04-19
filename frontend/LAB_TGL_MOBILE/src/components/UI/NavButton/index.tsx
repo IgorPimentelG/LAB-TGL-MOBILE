@@ -8,31 +8,30 @@ const NavButton: React.FC<{ config: IConfigNavButton }> = ({ config }) => {
 
     const theme = useTheme();
 
+    const iconColor = config.type === NavButtonType.PRIMARY ? theme.colors.primary : theme.colors.text;
+    const iconSize = 25;
+
     return(
         <Touchable onPress={config.onPressHandler}>
-            { config.iconArrowLeft && (
-                <Ionicons 
-                    name='arrow-back-outline' 
-                    size={25} 
-                    color={
-                        config.type === NavButtonType.PRIMARY ? 
-                            theme.colors.primary : theme.colors.text
-                    }
-                /> 
-            )}
+            <Label type={config.type}>
+                { config.iconArrowLeft && (
+                    <Ionicons 
+                        name='arrow-back-outline' 
+                        size={iconSize} 
+                        color={iconColor}
+                    /> 
+                )}
 
-            <Label type={config.type}>{ config.label }</Label>
+                { config.label }
 
-            { config.iconArrowRight && (
-                <Ionicons
-                    name='arrow-forward-outline' 
-                    size={25}
-                    color={
-                        config.type === NavButtonType.PRIMARY ? 
-                            theme.colors.primary : theme.colors.text
-                    }
-                /> 
-            )}
+                { config.iconArrowRight && (
+                    <Ionicons
+                        name='arrow-forward-outline' 
+                        size={iconSize}
+                        color={iconColor}
+                    /> 
+                )}
+            </Label>          
         </Touchable>
     );
 }
