@@ -1,9 +1,10 @@
 import { Container, TextField } from "./styles";
+import { IConfigInput } from "@shared/model/interfaces/form";
 
-const Input = () => {
+const Input: React.FC<{ configInput: IConfigInput }> = ({ configInput }) => {
     return(
         <Container>
-            <TextField/>
+            <TextField {...configInput}/>
         </Container>
     );
 }

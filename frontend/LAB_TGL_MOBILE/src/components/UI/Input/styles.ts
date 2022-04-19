@@ -6,5 +6,8 @@ export const Container = styled.View`
 `;
 
 export const TextField = styled.TextInput`
-    
+    padding: 20px;
+    color: ${({theme}) => theme.colors.placeholder};
+    font-weight: bold;
+    font-style: italic;
 `;

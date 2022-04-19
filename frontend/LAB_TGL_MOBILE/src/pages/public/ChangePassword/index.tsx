@@ -1,6 +1,7 @@
+import { ChangePasswordProps } from "@shared/model/types/navigation";
 import { View } from "react-native";
 
-const ChangePassword = () => {
+const ChangePassword = ({ navigation }: ChangePasswordProps) => {
     return(
         <View></View>
     );
