@@ -1,11 +1,15 @@
 import Form from '@components/Form';
+import { useForm } from 'react-hook-form';
+import { FormSignUpSchema } from '@shared/schemas';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { NavButtonType } from '@shared/model/enums/form';
 import { SignUpProps } from '@shared/model/types/navigation';
-import { useForm } from 'react-hook-form';
 
 const SignUp = ({ navigation }: SignUpProps) => {
 
-    const { control, handleSubmit, formState: { errors }} = useForm();
+    const { control, handleSubmit, formState: { errors }} = useForm({
+        resolver: yupResolver(FormSignUpSchema)
+    });
 
     const onSubmit = () => {
 
