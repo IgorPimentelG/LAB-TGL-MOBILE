@@ -1240,7 +1240,7 @@
 
 "@hookform/resolvers@^2.8.8":
   version "2.8.8"
-  resolved "https://registry.yarnpkg.com/@hookform/resolvers/-/resolvers-2.8.8.tgz#17cf806485435877fdafce9f3bee6ff68f7f87b6"
+  resolved "https://registry.npmjs.org/@hookform/resolvers/-/resolvers-2.8.8.tgz"
   integrity sha512-meAEDur1IJBfKyTo9yPYAuzjIfrxA7m9Ov+1nxaW/YupsqMeseWifoUjWK03+hz/RJizsVQAaUjVxFEkyu0GWg==
 
 "@jest/create-cache-key-function@^26.5.0":
@@ -1299,6 +1299,13 @@
   dependencies:
     "@nodelib/fs.scandir" "2.1.5"
     fastq "^1.6.0"
+
+"@react-native-async-storage/async-storage@~1.15.0":
+  version "1.15.17"
+  resolved "https://registry.yarnpkg.com/@react-native-async-storage/async-storage/-/async-storage-1.15.17.tgz#0dae263a52e476ffce871086f1fef5b8e44708eb"
+  integrity sha512-NQCFs47aFEch9kya/bqwdpvSdZaVRtzU7YB02L8VrmLSLpKgQH/1VwzFUBPcc1/JI1s3GU4yOLVrEbwxq+Fqcw==
+  dependencies:
+    merge-options "^3.0.4"
 
 "@react-native-community/cli-debugger-ui@^5.0.1":
   version "5.0.1"
@@ -1487,7 +1494,7 @@
 
 "@reduxjs/toolkit@^1.8.1":
   version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@reduxjs/toolkit/-/toolkit-1.8.1.tgz#94ee1981b8cf9227cda40163a04704a9544c9a9f"
+  resolved "https://registry.npmjs.org/@reduxjs/toolkit/-/toolkit-1.8.1.tgz"
   integrity sha512-Q6mzbTpO9nOYRnkwpDlFOAbQnd3g7zj7CtHAZWz5SzE5lcV97Tf8f3SzOO8BoPOMYBFgfZaqTUZqgGu+a0+Fng==
   dependencies:
     immer "^9.0.7"
@@ -1571,7 +1578,7 @@
 
 "@types/react-native@^0.65":
   version "0.65.22"
-  resolved "https://registry.yarnpkg.com/@types/react-native/-/react-native-0.65.22.tgz#58eaf2f64eb37fcb5fa9725547a8e043c4ecbc07"
+  resolved "https://registry.npmjs.org/@types/react-native/-/react-native-0.65.22.tgz"
   integrity sha512-3M5ukXrxuoMHlH6pF+HVcudX3SoUUynmUJiTZqPPSY/wDlFVOfbf0P21F7gkXeHbsZ6RbZfoQfQMR6rs7xsPDA==
   dependencies:
     "@types/react" "*"
@@ -1606,7 +1613,7 @@
 
 "@types/styled-components-react-native@^5.1.3":
   version "5.1.3"
-  resolved "https://registry.yarnpkg.com/@types/styled-components-react-native/-/styled-components-react-native-5.1.3.tgz#a340208914a2bbb73f05abd6c8b8accffa9c7412"
+  resolved "https://registry.npmjs.org/@types/styled-components-react-native/-/styled-components-react-native-5.1.3.tgz"
   integrity sha512-IXaogtizUkHJNzSxihG4KK3Z+jaHFp4XyHYIh/I7SUHCc1DsBxToQpE33JITPkgP6DzfgeDn9JkGBGhDIy+GIQ==
   dependencies:
     "@types/react" "*"
@@ -1624,7 +1631,7 @@
 
 "@types/use-sync-external-store@^0.0.3":
   version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz#b6725d5f4af24ace33b36fafd295136e75509f43"
+  resolved "https://registry.npmjs.org/@types/use-sync-external-store/-/use-sync-external-store-0.0.3.tgz"
   integrity sha512-EwmlvuaxPNej9+T4v5AuBPJa2x2UOJVdjCtDHgcDqitUeOtjnJKJ+apYjVcAoBEMjKW1VVFGZLUb5+qqa09XFA==
 
 "@types/yargs-parser@*":
@@ -1826,7 +1833,7 @@ atob@^2.1.2:
 
 axios@^0.26.1:
   version "0.26.1"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.26.1.tgz#1ede41c51fcf51bbbd6fd43669caaa4f0495aaa9"
+  resolved "https://registry.npmjs.org/axios/-/axios-0.26.1.tgz"
   integrity sha512-fPwcX4EvnSHuInCMItEhAGnaSEXRBjtzh9fOtsE6E1G6p7vl7edEeZe11QHf18+6+9gR5PbKV/sGKNaD8YaMeA==
   dependencies:
     follow-redirects "^1.14.8"
@@ -2938,7 +2945,7 @@ flow-parser@^0.121.0:
 
 follow-redirects@^1.14.8:
   version "1.14.9"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.9.tgz#dd4ea157de7bfaf9ea9b3fbd85aa16951f78d8d7"
+  resolved "https://registry.npmjs.org/follow-redirects/-/follow-redirects-1.14.9.tgz"
   integrity sha512-MQDfihBQYMcyy5dhRDJUHcw7lb2Pv/TuE6xP1vyraLukNDHKbDxDNaOE3NbCAdKQApno+GPRyo1YAp89yCjK4w==
 
 fontfaceobserver@^2.1.0:
@@ -3202,7 +3209,7 @@ image-size@^0.6.0:
 
 immer@^9.0.7:
   version "9.0.12"
-  resolved "https://registry.yarnpkg.com/immer/-/immer-9.0.12.tgz#2d33ddf3ee1d247deab9d707ca472c8c942a0f20"
+  resolved "https://registry.npmjs.org/immer/-/immer-9.0.12.tgz"
   integrity sha512-lk7UNmSbAukB5B6dh9fnh5D0bJTOFKxVg2cyJWTYrWRfhLrLMBquONcUs3aFq507hNoIZEDDh8lb8UtOizSMhA==
 
 import-fresh@^2.0.0:
@@ -3375,6 +3382,11 @@ is-number@^7.0.0:
   version "7.0.0"
   resolved "https://registry.npmjs.org/is-number/-/is-number-7.0.0.tgz"
   integrity sha512-41Cifkg6e8TylSpdtTpeLVMqvSBEVzTttHvERD741+pnZ8ANv0004MRL43QKPDlK9cGvNp6NZWZUBlbGXYxxng==
+
+is-plain-obj@^2.1.0:
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/is-plain-obj/-/is-plain-obj-2.1.0.tgz#45e42e37fccf1f40da8e5f76ee21515840c09287"
+  integrity sha512-YWnfyRwxL/+SsrWYfOpUtz5b3YD+nyfkHvjbcanzk8zgyO4ASD67uVMRt8k5bM4lLMDnXfriRhOpemw+NfT1eA==
 
 is-plain-object@^2.0.3, is-plain-object@^2.0.4:
   version "2.0.4"
@@ -3841,6 +3853,13 @@ md5-file@^3.2.3:
   dependencies:
     buffer-alloc "^1.1.0"
 
+merge-options@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/merge-options/-/merge-options-3.0.4.tgz#84709c2aa2a4b24c1981f66c179fe5565cc6dbb7"
+  integrity sha512-2Sug1+knBjkaMsMgf1ctR1Ujx+Ayku4EdJN4Z+C2+JzoeF7A3OZ9KM2GY0CpQS51NR61LTurMJrRKPhSs3ZRTQ==
+  dependencies:
+    is-plain-obj "^2.1.0"
+
 merge-stream@^2.0.0:
   version "2.0.0"
   resolved "https://registry.npmjs.org/merge-stream/-/merge-stream-2.0.0.tgz"
@@ -4178,6 +4197,11 @@ minimist@^1.1.1, minimist@^1.2.0, minimist@^1.2.6:
   version "1.2.6"
   resolved "https://registry.npmjs.org/minimist/-/minimist-1.2.6.tgz"
   integrity sha512-Jsjnk4bw3YJqYzbdyBiNsPWHPfO++UGG749Cxs6peCu5Xg4nrena6OVxOYxrQTqww0Jmwt+Ref8rggumkTLz9Q==
+
+mitt@1.1.3:
+  version "1.1.3"
+  resolved "https://registry.npmjs.org/mitt/-/mitt-1.1.3.tgz"
+  integrity sha512-mUDCnVNsAi+eD6qA0HkRkwYczbLHJ49z17BGe2PYRhZL4wpZUFZGJHU7/5tmvohoma+Hdn0Vh/oJTiPEmgSruA==
 
 mixin-deep@^1.2.0:
   version "1.3.2"
@@ -4654,6 +4678,15 @@ pump@^3.0.0:
     end-of-stream "^1.1.0"
     once "^1.3.1"
 
+query-string@6.10.1:
+  version "6.10.1"
+  resolved "https://registry.npmjs.org/query-string/-/query-string-6.10.1.tgz"
+  integrity sha512-SHTUV6gDlgMXg/AQUuLpTiBtW/etZ9JT6k6RCtCyqADquApLX0Aq5oK/s5UeTUAWBG50IExjIr587GqfXRfM4A==
+  dependencies:
+    decode-uri-component "^0.2.0"
+    split-on-first "^1.0.0"
+    strict-uri-encode "^2.0.0"
+
 query-string@^7.0.0:
   version "7.1.1"
   resolved "https://registry.npmjs.org/query-string/-/query-string-7.1.1.tgz"
@@ -4718,7 +4751,7 @@ react-is@^17.0.1:
 
 react-is@^18.0.0:
   version "18.0.0"
-  resolved "https://registry.yarnpkg.com/react-is/-/react-is-18.0.0.tgz#026f6c4a27dbe33bf4a35655b9e1327c4e55e3f5"
+  resolved "https://registry.npmjs.org/react-is/-/react-is-18.0.0.tgz"
   integrity sha512-yUcBYdBBbo3QiPsgYDcfQcIkGZHfxOaoE6HLSnr1sPzMhdyxusbfKOSUbSd/ocGi32dxcj366PsTj+5oggeKKw==
 
 react-native-codegen@^0.0.6:
@@ -4729,6 +4762,11 @@ react-native-codegen@^0.0.6:
     flow-parser "^0.121.0"
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
+
+react-native-flipper@^0.34.0:
+  version "0.34.0"
+  resolved "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.34.0.tgz"
+  integrity sha512-48wgm29HJTOlZ0DibBsvXueEOY0EPIVL0wWKbwRfgrk86+luSEuLW3aZC50oJa95zSFb9qYShTV/6dWqh4Jamg==
 
 react-native-safe-area-context@3.3.2:
   version "3.3.2"
@@ -4796,7 +4834,7 @@ react-native@0.64.3:
 
 react-redux@^8.0.0:
   version "8.0.0"
-  resolved "https://registry.yarnpkg.com/react-redux/-/react-redux-8.0.0.tgz#7d98421e48c7a19c50a826d1a19ba7729c82a184"
+  resolved "https://registry.npmjs.org/react-redux/-/react-redux-8.0.0.tgz"
   integrity sha512-zBwWgosy/MD2KKr1CtZyAzAaUa1xifJNt2mNszaBF7TtNlst5dooofVz7Djo7cxxkYZn+010Fqef/O4yxlW3cA==
   dependencies:
     "@babel/runtime" "^7.12.1"
@@ -4818,6 +4856,23 @@ react@17.0.1:
   dependencies:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
+
+reactotron-core-client@2.8.10:
+  version "2.8.10"
+  resolved "https://registry.npmjs.org/reactotron-core-client/-/reactotron-core-client-2.8.10.tgz"
+  integrity sha512-SYRO4OCutJzfWMnaULUGVyETZnMDCU5ECNflXyM3Z5Gnfxp/wV6d7jYonhfxHdpU/aGb4Eg15C22myOCXSu6HQ==
+
+reactotron-react-native@^5.0.1:
+  version "5.0.1"
+  resolved "https://registry.npmjs.org/reactotron-react-native/-/reactotron-react-native-5.0.1.tgz"
+  integrity sha512-xiwTjJuQga6mD+ynt7fj50scMbfiSFDe1AIsf7VVqcSDrYJNnzVqHZtlC+lqYlzDu7TucOUQVVxJALcASEWYrg==
+  dependencies:
+    mitt "1.1.3"
+    query-string "6.10.1"
+    reactotron-core-client "2.8.10"
+    rn-host-detect "1.2.0"
+  optionalDependencies:
+    react-native-flipper "^0.34.0"
 
 readable-stream@~2.3.6:
   version "2.3.7"
@@ -4851,12 +4906,12 @@ rechoir@^0.6.2:
 
 redux-thunk@^2.4.1:
   version "2.4.1"
-  resolved "https://registry.yarnpkg.com/redux-thunk/-/redux-thunk-2.4.1.tgz#0dd8042cf47868f4b29699941de03c9301a75714"
+  resolved "https://registry.npmjs.org/redux-thunk/-/redux-thunk-2.4.1.tgz"
   integrity sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==
 
 redux@^4.1.2:
   version "4.2.0"
-  resolved "https://registry.yarnpkg.com/redux/-/redux-4.2.0.tgz#46f10d6e29b6666df758780437651eeb2b969f13"
+  resolved "https://registry.npmjs.org/redux/-/redux-4.2.0.tgz"
   integrity sha512-oSBmcKKIuIR4ME29/AeNUnl5L+hvBq7OaJWzaptTQJAntaPvxIJqfnjbaEiCzzaIz+XmVILfqAM3Ob0aXLPfjA==
   dependencies:
     "@babel/runtime" "^7.9.2"
@@ -5017,6 +5072,11 @@ rimraf@~2.6.2:
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
   dependencies:
     glob "^7.1.3"
+
+rn-host-detect@1.2.0:
+  version "1.2.0"
+  resolved "https://registry.npmjs.org/rn-host-detect/-/rn-host-detect-1.2.0.tgz"
+  integrity sha512-btNg5kzHcjZZ7t7mvvV/4wNJ9e3MPgrWivkRgWURzXL0JJ0pwWlU4zrbmdlz3HHzHOxhBhHB4D+/dbMFfu4/4A==
 
 rsvp@^4.8.4:
   version "4.8.5"
@@ -5678,7 +5738,7 @@ use-subscription@^1.0.0:
 
 use-sync-external-store@^1.0.0:
   version "1.0.0"
-  resolved "https://registry.yarnpkg.com/use-sync-external-store/-/use-sync-external-store-1.0.0.tgz#d98f4a9c2e73d0f958e7e2d2c2bfb5f618cbd8fd"
+  resolved "https://registry.npmjs.org/use-sync-external-store/-/use-sync-external-store-1.0.0.tgz"
   integrity sha512-AFVsxg5GkFg8GDcxnl+Z0lMAz9rE8DGJCc28qnBuQF7lac57B5smLcT37aXpXIIPz75rW4g3eXHPjhHwdGskOw==
 
 use@^3.1.0:
@@ -5901,7 +5961,7 @@ yocto-queue@^0.1.0:
 
 yup@^0.32.11:
   version "0.32.11"
-  resolved "https://registry.yarnpkg.com/yup/-/yup-0.32.11.tgz#d67fb83eefa4698607982e63f7ca4c5ed3cf18c5"
+  resolved "https://registry.npmjs.org/yup/-/yup-0.32.11.tgz"
   integrity sha512-Z2Fe1bn+eLstG8DRR6FTavGD+MeAwyfmouhHsIUgaADz8jvFKbO/fXc2trJKZg+5EBjh4gGm3iU/t3onKlXHIg==
   dependencies:
     "@babel/runtime" "^7.15.4"

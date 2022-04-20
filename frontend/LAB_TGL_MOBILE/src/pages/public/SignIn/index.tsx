@@ -6,27 +6,35 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { SignInProps } from '@shared/model/types/navigation';
-import { LoginResponse } from '@shared/model/types/auth';
 import { Keyboard } from 'react-native';
+import { UserActions } from '@store/user-slice';
 
 const SignIn = ({ navigation } : SignInProps) => {
+
+    const dispatch = useDispatch();
 
     const { control, handleSubmit, formState: { errors }} = useForm({
         resolver: yupResolver(FormSignInSchema)
     });
 
     const { login } = auth();
+    const { authenticate } = UserActions;
 
     async function onSubmit(data: FieldValues) {
 
         Keyboard.dismiss();
 
-        const credentails = {
-            email: data.email,
-            password: data.password
-        }
+        const credentails = { email: data.email, password: data.password };
 
-     
+        try {
+            const response = await login(credentails);
+            dispatch(authenticate({
+                user: response.data.user,
+                token: response.data.token
+            }));
+        } catch(error) {
+            
+        }
     }
 
     function onNavSignUp() {

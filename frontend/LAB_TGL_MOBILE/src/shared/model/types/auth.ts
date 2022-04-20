@@ -17,14 +17,20 @@ export type ChangePasswordPayload = {
 
 // Responses
 export type LoginResponse = {
-    user: User;
-    token: Token;
+    data: {
+        user: User;
+        token: Token;
+    }
 }
 
 export type ResetPasswordResponse = {
-    user: User;
+    data: {
+        user: User;
+    }
 }
 
 export type ChangePasswordResponse = {
-    user: User;
+    data: {
+        user: User;
+    }
 }

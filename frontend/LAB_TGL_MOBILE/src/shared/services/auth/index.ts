@@ -7,19 +7,18 @@ import {
     ResetPasswordResponse,
     ChangePasswordResponse
 } from '@shared/model/types/auth';
-import { AxiosResponse } from 'axios';
 
 const auth = () => {
 
-    function login(credentials: LoginPayload): Promise<LoginResponse> {
-        return api.post('/login', JSON.stringify(credentials));
+    async function login(credentials: LoginPayload): Promise<LoginResponse> {
+        return api.post('/login', credentials);
     }
 
-    function resetPassword(email: ResetPasswordPayload): Promise<ResetPasswordResponse> {
+    async function resetPassword(email: ResetPasswordPayload): Promise<ResetPasswordResponse> {
         return api.post('/reset', JSON.stringify(email));
     }
 
-    function changePassword(data: ChangePasswordPayload): Promise<ChangePasswordResponse> {
+    async function changePassword(data: ChangePasswordPayload): Promise<ChangePasswordResponse> {
         return api.post(`/reset/${data.token}`, JSON.stringify(data.password));
     }
 
