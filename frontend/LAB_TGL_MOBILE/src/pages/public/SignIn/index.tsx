@@ -1,9 +1,13 @@
 import Form from '@components/Form';
-import { useForm } from 'react-hook-form';
+import { auth } from '@shared/services';
+import { useDispatch } from 'react-redux';
 import { FormSignInSchema } from '@shared/schemas';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { SignInProps } from '@shared/model/types/navigation';
+import { LoginResponse } from '@shared/model/types/auth';
+import { Keyboard } from 'react-native';
 
 const SignIn = ({ navigation } : SignInProps) => {
 
@@ -11,15 +15,25 @@ const SignIn = ({ navigation } : SignInProps) => {
         resolver: yupResolver(FormSignInSchema)
     });
 
-    const onSubmit = () => {
+    const { login } = auth();
 
+    async function onSubmit(data: FieldValues) {
+
+        Keyboard.dismiss();
+
+        const credentails = {
+            email: data.email,
+            password: data.password
+        }
+
+     
     }
 
-    const onNavSignUp = () => {
+    function onNavSignUp() {
        navigation.navigate('SignUp');
     }
 
-    const onResetPassword = () => {
+    function onResetPassword() {
         navigation.navigate('ResetPassword');
     }
 

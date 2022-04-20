@@ -2,6 +2,7 @@ import * as yup from 'yup';
 
 const baseSchemaEmail = {
     email: yup.string()
+    .trim()
     .email('E-mail inválido')
     .required('Informe o seu e-mail')
 };

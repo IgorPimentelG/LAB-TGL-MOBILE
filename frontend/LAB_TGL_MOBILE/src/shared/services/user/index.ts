@@ -1,3 +1,4 @@
+import { api } from '../api/axios.config';
 import { 
     CreateUserPayload,
     CreateUserResponse,
@@ -5,7 +6,6 @@ import {
     UpdateUserResponse,
     MyAccountResponse
 } from '@shared/model/types/user';
-import { api } from '../axios.config';
 
 const user = () => {
 

@@ -1,5 +1,5 @@
+import { api } from '../api/axios.config';
 import { ListGameResponse } from '@shared/model/types/games';
-import { api } from '../axios.config';
 
 const games = () => {
     

@@ -1,4 +1,4 @@
-import { api } from '../axios.config';
+import { api } from '../api/axios.config';
 import { AllBetsResponse, NewBetPayload, NewBetResponse } from '@shared/model/types/bets';
 
 const bets = () => {

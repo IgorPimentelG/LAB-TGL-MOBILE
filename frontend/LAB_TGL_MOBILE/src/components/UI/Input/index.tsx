@@ -14,6 +14,7 @@ const Input: React.FC<{ configInput: IConfigInput }> = ({ configInput}) => {
                 render={({field: { onChange, value } }) => (
                     <TextField 
                         {...params}
+                        autoCapitalize='none'
                         onChangeText={onChange}
                         value={value}
                     />
