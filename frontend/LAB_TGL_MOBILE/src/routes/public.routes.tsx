@@ -1,6 +1,6 @@
+import { NavigationContainer } from '@react-navigation/native';
 import { PublicStackParamList } from '@shared/model/types/navigation';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { NavigationContainer } from '@react-navigation/native';
 import { SignIn, SignUp, Splash, ResetPassword, ChangePassword } from '@pages/public';
 
 import { useTheme } from 'styled-components';
