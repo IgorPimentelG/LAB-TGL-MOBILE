@@ -33,7 +33,7 @@ const SignIn = ({ navigation } : SignInProps) => {
                 token: response.data.token
             }));
         } catch(error) {
-            
+            console.log(error);
         }
     }
 

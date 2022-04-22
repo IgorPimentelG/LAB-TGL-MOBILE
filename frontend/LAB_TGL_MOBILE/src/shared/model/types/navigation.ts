@@ -8,8 +8,20 @@ export type PublicStackParamList = {
     ChangePassword: undefined;
 }
 
-export type SignInProps = NativeStackScreenProps<PublicStackParamList, 'SignIn'>
-export type SignUpProps = NativeStackScreenProps<PublicStackParamList, 'SignUp'>
-export type SplashProps = NativeStackScreenProps<PublicStackParamList, 'Splash'>
-export type ResetPasswordProps = NativeStackScreenProps<PublicStackParamList, 'ResetPassword'>
-export type ChangePasswordProps = NativeStackScreenProps<PublicStackParamList, 'ChangePassword'>
+export type PrivateDrawerParamList = {
+    Home: undefined;
+    Account: undefined;
+    NewBet: undefined;
+}
+
+// Public routes
+export type SignInProps = NativeStackScreenProps<PublicStackParamList, 'SignIn'>;
+export type SignUpProps = NativeStackScreenProps<PublicStackParamList, 'SignUp'>;
+export type SplashProps = NativeStackScreenProps<PublicStackParamList, 'Splash'>;
+export type ResetPasswordProps = NativeStackScreenProps<PublicStackParamList, 'ResetPassword'>;
+export type ChangePasswordProps = NativeStackScreenProps<PublicStackParamList, 'ChangePassword'>;
+
+// Private routes
+export type HomeProps = NativeStackScreenProps<PrivateDrawerParamList, 'Home'>;
+export type AccountProps = NativeStackScreenProps<PrivateDrawerParamList, 'Account'>;
+export type NewBetProps = NativeStackScreenProps<PrivateDrawerParamList, 'NewBet'>;

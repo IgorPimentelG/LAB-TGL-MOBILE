@@ -1,16 +1,18 @@
+import React from 'react';
+import { RootState } from '@store/index';
 import { useSelector } from 'react-redux';
 import { PublicRoutes } from './public.routes';
-import { NavigationContainer } from '@react-navigation/native';
-import { RootState } from '@store/index';
+import { PrivateRoutes } from './private.routes';
 
 const Routes = () => {
 
     const isAuthenticated = useSelector<RootState>((state) => state.auth.isAuthenticated);
 
     return(
-        <NavigationContainer>
+        <React.Fragment>
             {!isAuthenticated && <PublicRoutes/>}
-        </NavigationContainer>
+            {isAuthenticated && <PrivateRoutes/>}
+       </React.Fragment>
     );
 }
 
