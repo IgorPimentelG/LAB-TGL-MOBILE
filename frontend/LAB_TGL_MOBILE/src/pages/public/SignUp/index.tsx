@@ -1,21 +1,33 @@
 import Form from '@components/Form';
-import { useForm } from 'react-hook-form';
 import { FormSignUpSchema } from '@shared/schemas';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { SignUpProps } from '@shared/model/types/navigation';
+import { user } from '@shared/services';
 
 const SignUp = ({ navigation }: SignUpProps) => {
 
+    const { createUser } = user();
     const { control, handleSubmit, formState: { errors }} = useForm({
         resolver: yupResolver(FormSignUpSchema)
     });
 
-    const onSubmit = () => {
+    async function onSubmit(data: FieldValues) {
+        const userData = {
+            name: data.name,
+            email: data.email,
+            password: data.password
+        };
 
+        try {
+            const response = await createUser(userData);
+        } catch(error) {
+            console.log(error);
+        }
     }
 
-    const onGoBack = () => {
+    function onGoBack() {
         navigation.navigate('SignIn');
     }
 

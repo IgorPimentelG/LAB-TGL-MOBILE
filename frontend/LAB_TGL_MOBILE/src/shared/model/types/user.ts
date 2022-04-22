@@ -10,6 +10,7 @@ export type User = {
     created_at: string;
     updated_at: string;
     picture?: string | null;
+	bets?: Bet[] 
 }
 
 export type Token = {
@@ -32,8 +33,10 @@ export type UpdateUserPayload = {
 
 // Responses
 export type CreateUserResponse = {
-	user: User;
-	token: Token;
+	data: {
+		user: User;
+		token: Token;
+	}
 }
 
 export type UpdateUserResponse = {
@@ -41,6 +44,7 @@ export type UpdateUserResponse = {
 }
 
 export type MyAccountResponse = {
-	user: User;
-	bets: Bet[];
+	data: { 
+		user: User;
+	}
 }

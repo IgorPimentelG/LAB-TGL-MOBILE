@@ -9,19 +9,19 @@ import {
 
 const user = () => {
 
-    function createUer(newUser: CreateUserPayload): Promise<CreateUserResponse> {
-        return api.post('user/create', JSON.stringify(newUser));
+    async function createUser(newUser: CreateUserPayload): Promise<CreateUserResponse> {
+        return api.post('user/create', newUser);
     }
 
-    function updateMyUser(user: UpdateUserPayload): Promise<UpdateUserResponse> {
-        return api.put('user/update', JSON.stringify(user));
+    async function updateMyUser(user: UpdateUserPayload): Promise<UpdateUserResponse> {
+        return api.put('user/update', user);
     }
 
-    function myAccount(): Promise<MyAccountResponse> {
+    async function account(): Promise<MyAccountResponse> {
         return api.get('user/my-account');
     }
 
-    return { createUer, updateMyUser, myAccount };
+    return { createUser, updateMyUser, account };
 }
 
 export { user };

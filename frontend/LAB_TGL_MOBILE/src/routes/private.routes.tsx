@@ -2,7 +2,7 @@ import { useDispatch } from 'react-redux';
 import { IconButton } from '@components/UI';
 import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
-import { UserActions } from '@store/user-slice';
+import { userActions } from '@store/user-slice';
 import { MenuDrawer } from '@components/Layout';
 import { Home, Account, NewBet } from '@pages/private';
 import { NavigationContainer } from '@react-navigation/native';
@@ -15,7 +15,7 @@ const PrivateRoutes = () => {
     const dispatch = useDispatch();
     const Drawer = createDrawerNavigator<PrivateDrawerParamList>();
 
-    const { logout } = UserActions; 
+    const { logout } = userActions; 
 
     function onLogout() {
         dispatch(logout());

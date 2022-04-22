@@ -7,7 +7,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { SignInProps } from '@shared/model/types/navigation';
 import { Keyboard } from 'react-native';
-import { UserActions } from '@store/user-slice';
+import { userActions } from '@store/user-slice';
 
 const SignIn = ({ navigation } : SignInProps) => {
 
@@ -18,7 +18,7 @@ const SignIn = ({ navigation } : SignInProps) => {
     });
 
     const { login } = auth();
-    const { authenticate } = UserActions;
+    const { authenticate } = userActions;
 
     async function onSubmit(data: FieldValues) {
 
