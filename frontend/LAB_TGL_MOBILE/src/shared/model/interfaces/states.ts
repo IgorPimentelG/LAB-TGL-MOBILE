@@ -1,3 +1,4 @@
+import { Game } from '@shared/model/types/games';
 import { User, Token } from "@shared/model/types/user";
 
 export interface IUserStore {
@@ -10,4 +11,9 @@ export interface IUserStore {
 export interface ILoadingStore {
     isLoading: boolean;
     message: string;
+}
+
+export interface IGamesStore {
+    minCartValue: number | null;
+    types: Game[];
 }

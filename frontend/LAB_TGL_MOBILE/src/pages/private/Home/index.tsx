@@ -1,8 +1,21 @@
-import { View } from "react-native";
+import { useTypeGame } from '@hooks/useTypeGame';
+import { Title, TypeGameButton } from '@components/UI';
+import { ContainerTypeGame, RootContainer, Label } from './styles';
 
 const Home = () => {
+
+    const { configSwitchGame } = useTypeGame({ multipleSelection: true });
+
     return(
-        <View></View>
+        <RootContainer>
+            <Title>RECENT GAMES</Title>
+            <ContainerTypeGame>
+                <Label>Filters</Label>
+                { configSwitchGame().map((item, index) => (
+                    <TypeGameButton key={index} config={item}/>
+                ))}
+            </ContainerTypeGame>     
+        </RootContainer>
     );
 }
 

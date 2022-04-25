@@ -5,6 +5,7 @@ import NavButton from './NavButton';
 import Link from './Link';
 import Logo from './Logo';
 import IconButton from './IconButton';
+import TypeGameButton from './TypeGameButton';
 
 export { 
     TextMarketing,
@@ -13,5 +14,6 @@ export {
     NavButton, 
     Link, 
     Logo, 
-    IconButton
+    IconButton,
+    TypeGameButton
 };

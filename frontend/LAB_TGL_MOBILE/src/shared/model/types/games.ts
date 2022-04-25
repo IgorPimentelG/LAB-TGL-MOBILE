@@ -11,6 +11,8 @@ export type Game = {
 
 // Response
 export type ListGameResponse = {
+  data: {
     min_cart_value: number;
     types: Game[];
+  }
 }

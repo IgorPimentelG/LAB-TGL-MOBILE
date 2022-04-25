@@ -6,7 +6,7 @@ const initialState: IUserStore = {
     data: null,
     token: null,
     lastSession: null,
-    isAuthenticated: false
+    isAuthenticated: true
 };
 
 const UserSlice = createSlice({
