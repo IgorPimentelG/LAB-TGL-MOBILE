@@ -19,3 +19,8 @@ export const Label = styled.Text`
     margin-bottom: 5px;
     color: ${({theme}) => theme.colors.label};
 `;
+
+export const ContainerBets = styled.View`
+    margin: 10px 0;
+    height: 40%;
+`;

@@ -35,7 +35,7 @@ const useTypeGame = (config?: Config) => {
         } 
     }, [typesGames]);
 
-    function onPress(id: number) {
+    function changeGameHandler(id: number) {
 
         const game = typesGames.filter((item) => item.id === id)[0];
 
@@ -69,12 +69,16 @@ const useTypeGame = (config?: Config) => {
                 name: item.type,
                 color: item.color,
                 isEnabled: verifyStatus(item.id),
-                onPress: onPress.bind(null, item.id)
+                onPress: changeGameHandler.bind(null, item.id)
             };
         });
     }
 
-    return { configSwitchGame };
+    function searchConfigGame(id: number): Game {
+        return typesGames.filter((type) => type.id === id)[0];
+    }
+
+    return { configSwitchGame, searchConfigGame };
 }
 
 export { useTypeGame };

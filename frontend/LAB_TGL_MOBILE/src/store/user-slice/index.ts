@@ -6,20 +6,28 @@ const initialState: IUserStore = {
     data: null,
     token: null,
     lastSession: null,
-    isAuthenticated: true
+    isAuthenticated: false
 };
 
 const UserSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        authenticate: (state, action) => {
+        authenticate: (_state, action) => {
+            action.payload.user.bets = [];
             return {
                 data: action.payload.user,
                 token: action.payload.token,
                 isAuthenticated: true,
                 lastSession: null
-            }
+            };
+        },
+
+        updateBetsUser: (state, action) => {
+            return {
+                ...state,
+                data: action.payload
+            };
         },
 
         logout: () => {
