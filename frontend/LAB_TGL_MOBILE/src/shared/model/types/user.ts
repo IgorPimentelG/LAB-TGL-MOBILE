@@ -1,4 +1,5 @@
 import { Bet } from './bets';
+
 // Data
 export type User = {
     id: number;

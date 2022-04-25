@@ -14,7 +14,7 @@ const useAuth = () => {
     
     async function verifyToken() {
 
-        dispatch(enableLoading(''));
+        dispatch(enableLoading(' '));
 
         const token = await AsyncStorage.getItem('@token');
 

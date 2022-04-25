@@ -32,11 +32,11 @@ export const FormSignUpSchema = yup.object().shape({
     password: baseSchemaPassword.password
 });
 
-export const FormResetPassword = yup.object().shape({
+export const FormResetPasswordSchema = yup.object().shape({
     email: baseSchemaEmail.email
 });
 
-export const FormChangePassword = yup.object().shape({
+export const FormChangePasswordSchema = yup.object().shape({
     password: baseSchemaPassword.password,
     passwordConfirm: yup.string()
     .required('Confirme sua senha')

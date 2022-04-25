@@ -5,7 +5,7 @@ export type PublicStackParamList = {
     SignUp: undefined;
     Splash: undefined;
     ResetPassword: undefined;
-    ChangePassword: undefined;
+    ChangePassword: { token: string };
 }
 
 export type PrivateDrawerParamList = {

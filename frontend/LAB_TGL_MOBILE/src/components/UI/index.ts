@@ -6,4 +6,12 @@ import Link from './Link';
 import Logo from './Logo';
 import IconButton from './IconButton';
 
-export { TextMarketing, Title, Input, NavButton, Link, Logo, IconButton};
+export { 
+    TextMarketing,
+    Title, 
+    Input, 
+    NavButton, 
+    Link, 
+    Logo, 
+    IconButton
+};

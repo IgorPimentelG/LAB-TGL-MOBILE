@@ -1,10 +1,10 @@
 import { api } from '../api/axios.config';
 import { 
     LoginPayload,
-    ResetPasswordPayload, 
+    FindUserPayload, 
     ChangePasswordPayload, 
     LoginResponse,
-    ResetPasswordResponse,
+    FindUserResponse,
     ChangePasswordResponse
 } from '@shared/model/types/auth';
 
@@ -14,15 +14,15 @@ const auth = () => {
         return api.post('/login', credentials);
     }
 
-    async function resetPassword(email: ResetPasswordPayload): Promise<ResetPasswordResponse> {
-        return api.post('/reset', JSON.stringify(email));
+    async function findUser(email: FindUserPayload): Promise<FindUserResponse> {
+        return api.post('/reset', {email});
     }
 
     async function changePassword(data: ChangePasswordPayload): Promise<ChangePasswordResponse> {
-        return api.post(`/reset/${data.token}`, JSON.stringify(data.password));
+        return api.post(`/reset/${data.token}`, {password: data.password});
     }
 
-    return { login, resetPassword, changePassword };
+    return { login, findUser, changePassword };
 }
 
 export { auth };

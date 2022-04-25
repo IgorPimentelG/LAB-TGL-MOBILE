@@ -4,6 +4,7 @@ export interface IUserStore {
     data: User | null;
     token: Token | null;
     isAuthenticated: boolean;
+    lastSession: string | null;
 }
 
 export interface ILoadingStore {

@@ -5,6 +5,7 @@ import { IUserStore } from './../../shared/model/interfaces/states';
 const initialState: IUserStore = {
     data: null,
     token: null,
+    lastSession: null,
     isAuthenticated: false
 };
 
@@ -12,17 +13,21 @@ const UserSlice = createSlice({
     name: 'user',
     initialState,
     reducers: {
-        authenticate: (_state, action) => {
+        authenticate: (state, action) => {
             return {
                 data: action.payload.user,
                 token: action.payload.token,
-                isAuthenticated: true
+                isAuthenticated: true,
+                lastSession: null
             }
         },
 
         logout: () => {
             AsyncStorage.clear();
-            return initialState;
+            return {
+                ...initialState,
+                lastSession: new Date().toISOString()
+            };
         }
     }
 });

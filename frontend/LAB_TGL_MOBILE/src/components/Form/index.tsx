@@ -39,7 +39,9 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
 
                     {configForm.link && (
                         <ContainerLink>
-                            <Link onPress={configForm.link.onPress}>{configForm.link.label}</Link>
+                            <Link onPress={configForm.link.onPress}>
+                                {configForm.link.label}
+                            </Link>
                         </ContainerLink>
                     )}
                     <NavButton config={configForm.primaryButton}/>

@@ -6,7 +6,7 @@ export type LoginPayload = {
     password: string;
 }
 
-export type ResetPasswordPayload = {
+export type FindUserPayload = {
     email: string;
 }
 
@@ -23,7 +23,7 @@ export type LoginResponse = {
     }
 }
 
-export type ResetPasswordResponse = {
+export type FindUserResponse = {
     data: {
         user: User;
     }
