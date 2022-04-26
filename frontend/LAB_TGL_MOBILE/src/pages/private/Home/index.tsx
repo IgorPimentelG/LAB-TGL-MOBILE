@@ -1,21 +1,23 @@
 import { useEffect, useState } from 'react';
-import { useTypeGame } from '@hooks/useTypeGame';
-import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
-import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/index';
-import { Bet } from '@shared/model/types/bets';
 import { user } from '@shared/services';
+import { useSort } from '@hooks/useSort';
+import { Bet } from '@shared/model/types/bets';
 import { userActions } from '@store/user-slice';
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent, Text } from 'react-native';
-import CardUserBet from '@components/Layout/CardUserBet';
+import { CardUserBet } from '@components/Layout';
+import { useTypeGame } from '@hooks/useTypeGame';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavButtonType } from '@shared/model/enums/form';
+import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
+import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
 
 const Home = () => {
 
     const dispatch = useDispatch();
 
     const { account } = user();
+    const { sortBets } = useSort();
     const { updateBetsUser } = userActions;
     const { configSwitchGame, selectedGames } = useTypeGame({ multipleSelection: true });
 
@@ -56,13 +58,17 @@ const Home = () => {
             setFilterGames(() => {
                 if( filter.length > 2 ) {
                     setShowIconScroll(true);
+                } else {
+                    setShowIconScroll(false);
                 }
-                return [...filter];
+
+                return [...filter.sort(sortBets)];
             });
         }
     }, [selectedGames, userBets]);
 
-    function scrollHandler(event: NativeSyntheticEvent<NativeScrollEvent>) {
+    // Configura o icone de scroll
+    function scrollListener(event: NativeSyntheticEvent<NativeScrollEvent>) {
         const heightScroll = event.nativeEvent.contentOffset.y;
 
         if( heightScroll < 30 ) {
@@ -84,7 +90,7 @@ const Home = () => {
             <ContainerBets>
                 {filterGames.length > 0 && 
                     <FlatList
-                        onScroll={scrollHandler}
+                        onScroll={scrollListener}
                         keyExtractor={(item) => item.id.toString()}
                         data={filterGames}
                         renderItem={({item}) => <CardUserBet data={item}/>}

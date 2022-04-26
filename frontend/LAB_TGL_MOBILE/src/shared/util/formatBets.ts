@@ -1,3 +1,5 @@
+import { Bet } from '@shared/model/types/bets';
+
 function formatNumbers(numbers: string) {
     let listNumbers = numbers.split(',').map((number) => Number(number));
     listNumbers = listNumbers.sort(sortNumbers);

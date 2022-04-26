@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const Touchable = styled.TouchableOpacity<any>`
     width: 60%;
-    padding: 8px;
+    padding: 6px;
     align-items: center;
     justify-content: center;
     background-color: #FFF;

@@ -21,7 +21,7 @@ export const ContainerBets = styled.View`
 
 export const ContainerNav = styled.View`
     flex: 1;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
 `;
 
