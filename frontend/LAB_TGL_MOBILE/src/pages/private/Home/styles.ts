@@ -17,6 +17,8 @@ export const ContainerBets = styled.View`
     width: 100%;
     height: 220px;
     margin: 10px 0;
+    justify-content: center;
+    align-items: center;
 `;
 
 export const ContainerNav = styled.View`
@@ -31,4 +33,3 @@ export const Label = styled.Text`
     margin-bottom: 5px;
     color: ${({theme}) => theme.colors.label};
 `;
-
