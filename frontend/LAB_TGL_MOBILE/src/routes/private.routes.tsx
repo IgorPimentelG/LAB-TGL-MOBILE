@@ -27,11 +27,11 @@ const PrivateRoutes = () => {
                 drawerContent={(props) => <MenuDrawer {...props}/>}
                 initialRouteName='Home'
                 screenOptions={{
-                    sceneContainerStyle: {  backgroundColor: theme.colors.backgroundColor },
+                    sceneContainerStyle: {  backgroundColor: theme.backgrund.wildSand },
                     headerTitleAlign: 'center',
-                    drawerActiveBackgroundColor: theme.colors.primary,
+                    drawerActiveBackgroundColor: theme.main.rioGrande,
                     drawerActiveTintColor: '#FFF',
-                    headerTintColor: theme.colors.text,
+                    headerTintColor: theme.text.doveGray,
                     headerTitleStyle: {
                         fontStyle: 'italic',
                         fontWeight: 'bold'
@@ -45,7 +45,7 @@ const PrivateRoutes = () => {
                        <IconButton config={{
                            icon: 'log-out-outline',
                            size: 25,
-                           color: theme.colors.text,
+                           color: theme.text.doveGray,
                            onPress: onLogout
                        }}/>
                     )

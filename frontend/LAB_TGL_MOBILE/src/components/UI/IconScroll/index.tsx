@@ -10,7 +10,7 @@ const IconScroll = () => {
         <Container>
             <AntDesign 
                 name='circledown' 
-                color={theme.colors.text}
+                color={theme.text.gray800}
                 size={25}
             />
         </Container>

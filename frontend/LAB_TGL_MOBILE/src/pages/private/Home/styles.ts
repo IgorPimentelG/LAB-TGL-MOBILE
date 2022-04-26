@@ -31,5 +31,5 @@ export const Label = styled.Text`
     font-size: 16px;
     font-style: italic;
     margin-bottom: 5px;
-    color: ${({theme}) => theme.colors.label};
+    color: ${({theme}) => theme.text.gray100};
 `;

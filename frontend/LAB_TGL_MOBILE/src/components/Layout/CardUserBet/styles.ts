@@ -19,7 +19,7 @@ export const ContainerInfo = styled.View`
 `;
 
 export const LabelInfo = styled.Text`
-    color: ${({theme}) => theme.colors.label};
+    color: ${({theme}) => theme.text.gray100};
     margin: 5px 0;
 `;
 
@@ -34,5 +34,5 @@ export const Numbers = styled.Text`
     font-weight: bold;
     font-style: italic;
     font-size: 16px;
-    color: ${({theme}) => theme.colors.text}
+    color: ${({theme}) => theme.text.gray800}
 `;

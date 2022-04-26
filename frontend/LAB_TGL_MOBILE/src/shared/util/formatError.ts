@@ -1,5 +1,6 @@
 import { AxiosError } from 'axios';
 import { Error } from '@shared/model/interfaces/error';
+
 function formatError(inputs: string[], errors: any): string {
     let message = '';
 

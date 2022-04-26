@@ -1,4 +1,3 @@
-import TextMarketing from './TextMarketing';
 import Title from './Title';
 import Input from './Input';
 import NavButton from './NavButton';
@@ -10,7 +9,6 @@ import TypeGameButton from './TypeGameButton';
 import IconScroll from './IconScroll';
 
 export { 
-    TextMarketing,
     Title, 
     Input, 
     NavButton, 

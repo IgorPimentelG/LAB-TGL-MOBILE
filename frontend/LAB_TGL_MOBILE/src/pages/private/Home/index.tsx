@@ -14,8 +14,9 @@ import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
 import { useTheme } from 'styled-components';
+import { HomeProps } from '@shared/model/types/navigation';
 
-const Home = () => {
+const Home = ({ navigation }: HomeProps) => {
 
     const dispatch = useDispatch();
     const theme = useTheme();
@@ -34,20 +35,18 @@ const Home = () => {
 
     // Consultar apostas do usuário logado
     useLayoutEffect(() => {
-
-        dispatch(enableLoading('Carregando apostas...'));
-
         const fetchAccount = async () => {
-           try {
-                const response = await account();
-                dispatch(updateBetsUser(response.data));
-           } catch(error: any) {
-                setError(error.message);
-           }
+            dispatch(enableLoading('Carregando apostas...'));
+            try {
+                    const response = await account();
+                    dispatch(updateBetsUser(response.data));
+            } catch(error: any) {
+                //  setError('Não foi possível recuperar suas apostas.');
+            }
+            dispatch(disableLoading());
         }   
 
         fetchAccount();
-        dispatch(disableLoading());
     }, [userBets]);
 
     // Filter games
@@ -92,6 +91,10 @@ const Home = () => {
     function onConfirmModal() {
         setError(null);
     }
+
+    function newBerHandler() {
+        navigation.replace('NewBet');
+    }
  
     return(
         <React.Fragment>
@@ -112,7 +115,7 @@ const Home = () => {
                     {filterGames.length === 0 &&  ( 
                         <>
                             <Label>Nenhuma Aposta Encontrada</Label>
-                            <Entypo name='emoji-sad' size={25} color={theme.colors.label} />
+                            <Entypo name='emoji-sad' size={25} color={theme.text.gray100} />
                         </>
                     )}
                     {filterGames.length > 0 && 
@@ -131,7 +134,7 @@ const Home = () => {
                             label: 'New Bet',
                             type: NavButtonType.PRIMARY,
                             iconArrowRight: true,
-                            onPressHandler: () => {}
+                            onPressHandler: newBerHandler
                         }}
                     />
                 </ContainerNav>

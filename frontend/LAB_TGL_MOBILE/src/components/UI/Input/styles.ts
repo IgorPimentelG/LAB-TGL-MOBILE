@@ -6,12 +6,12 @@ function getBorderRadius(index: number): string {
 
 export const Container = styled.View<any>`
     ${({ hasError, theme }) => !hasError && `
-        border-bottom-color: ${theme.colors.borderInput};
+        border-bottom-color: ${theme.border.gray50};
         border-bottom-width: 2px;
     `};
     
     ${({ hasError, theme, index }) => hasError && `
-        border: 2px solid ${theme.colors.error};
+        border: 2px solid ${theme.main.red700};
         border-top-left-radius: ${getBorderRadius(index)};
         border-top-right-radius: ${getBorderRadius(index)};
     `};
@@ -21,5 +21,5 @@ export const TextField = styled.TextInput`
     padding: 20px;
     font-weight: bold;
     font-style: italic;
-    color: ${({theme}) => theme.colors.placeholder};
+    color: ${({theme}) => theme.text.gray500};
 `;

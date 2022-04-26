@@ -16,6 +16,6 @@ export const Label = styled.Text<any>`
     text-transform: capitalize;
     color: ${
         ({theme, type}) => 
-            type === NavButtonType.PRIMARY ? theme.colors.primary : theme.colors.text
+            type === NavButtonType.PRIMARY ? theme.main.green900 : theme.text.gray800
     };
 `;

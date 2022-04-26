@@ -9,6 +9,7 @@ export type PublicStackParamList = {
 }
 
 export type PrivateDrawerParamList = {
+    Drawer: undefined;
     Home: undefined;
     Account: undefined;
     NewBet: undefined;

@@ -4,7 +4,7 @@ export const RootContainer = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-    background-color: ${({theme}) => theme.colors.backgroundColor};
+    background-color: ${({theme}) => theme.backgrund.white900};
 `;
 
 export const ContainerLogo = styled.View`
@@ -16,7 +16,7 @@ export const ContainerMessage = styled.View`
 `;
 
 export const Message = styled.Text`
-    color: ${({theme}) => theme.colors.text};
+    color: ${({theme}) => theme.text.gray800};
     font-weight: bold;
     text-transform: capitalize;
 `;

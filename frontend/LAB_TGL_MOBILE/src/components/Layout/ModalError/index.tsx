@@ -27,7 +27,7 @@ const ModalError: React.FC<{
                     <ContainerIcon>
                         <MaterialCommunityIcons
                             name='alert-circle'
-                            color={theme.colors.error}
+                            color={theme.main.red700}
                             size={80}
                         />
                     </ContainerIcon>

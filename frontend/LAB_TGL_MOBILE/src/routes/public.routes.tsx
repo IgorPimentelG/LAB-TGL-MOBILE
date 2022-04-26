@@ -16,7 +16,7 @@ const PublicRoutes = () => {
                 initialRouteName='Splash' 
                 screenOptions={{
                     headerShown: false,
-                    contentStyle: { backgroundColor: theme.colors.backgroundColor }
+                    contentStyle: { backgroundColor: theme.backgrund.wildSand }
                 }}
             >
                 <Stack.Screen name='Splash' component={Splash}/>

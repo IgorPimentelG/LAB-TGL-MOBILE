@@ -2,8 +2,15 @@ import { useState, useEffect } from 'react';
 import { Card } from '@components/Layout';
 import { IForm } from '@shared/model/interfaces/form';
 import { Keyboard, TouchableWithoutFeedback } from 'react-native';
-import { ContainerLink, ContainerTitle, RootContainer } from './styles';
-import { Title, Input, Link, NavButton, TextMarketing } from '@components/UI';
+import { Title, Input, Link, NavButton } from '@components/UI';
+import { 
+    ContainerLink, 
+    ContainerTitle, 
+    RootContainer, 
+    ContainerText,
+    Text,
+    TextHighlighted
+} from './styles';
 
 const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
 
@@ -28,7 +35,13 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <RootContainer>
-               {!keyboardVisible && <TextMarketing/>}
+               {!keyboardVisible && (
+                    <ContainerText>
+                        <Text>{'The Greatest App'}</Text>
+                        <TextHighlighted>for</TextHighlighted>
+                        <Text>LOTTERY</Text>
+                    </ContainerText>
+               )}
                 <ContainerTitle>
                     <Title>{configForm.title}</Title>
                 </ContainerTitle>

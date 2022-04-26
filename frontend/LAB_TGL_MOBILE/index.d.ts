@@ -2,15 +2,25 @@ import 'styled-components';
 
 declare module 'styled-components' {
     export interface DefaultTheme {
-        colors: {
-            primary: string;
-            text: string;
-            label: string;
-            placeholder: string;
-            backgroundColor: string;
-            borderCard: string;
-            borderInput: string;
-            error: string;
+        text: {
+            gray900: string;
+            gray800: string;
+            gray500: string;
+            gray100: string;
+        },
+
+        backgrund: {
+            white900: string;
+        },
+
+        main: {
+            green900: string;
+            red700: string;
+        },
+
+        border: {
+            gray50: string;
+            gray100: string;
         }
     }
 }

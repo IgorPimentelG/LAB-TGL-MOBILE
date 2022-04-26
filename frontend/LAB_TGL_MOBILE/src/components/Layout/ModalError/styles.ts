@@ -36,7 +36,7 @@ export const Text = styled.Text`
     font-size: 16px;
     font-style: italic;
     text-align: center;
-    color: ${({theme}) => theme.colors.text};
+    color: ${({theme}) => theme.text.gray800};
 `;
 
 export const LabelButton = styled.Text`
@@ -53,5 +53,5 @@ export const Touchable = styled.TouchableOpacity`
     align-items: center;
     justify-content: center;
     border-radius: 10px;
-    background-color: ${({ theme }) => theme.colors.error};
+    background-color: ${({ theme }) => theme.main.red700};
 `;

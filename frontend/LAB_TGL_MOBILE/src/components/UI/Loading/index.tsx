@@ -18,7 +18,7 @@ const Loading = () => {
                     <Logo/>
                 </ContainerLogo>
 
-                <ActivityIndicator size='large' color={theme.colors.primary}/>
+                <ActivityIndicator size='large' color={theme.main.green900}/>
 
                { message && 
                     <ContainerMessage>

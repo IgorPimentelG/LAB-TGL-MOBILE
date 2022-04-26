@@ -8,7 +8,7 @@ const NavButton: React.FC<{ config: IConfigNavButton }> = ({ config }) => {
 
     const theme = useTheme();
 
-    const iconColor = config.type === NavButtonType.PRIMARY ? theme.colors.primary : theme.colors.text;
+    const iconColor = config.type === NavButtonType.PRIMARY ? theme.main.green900 : theme.text.gray800;
     const iconSize = 25;
 
     return(
