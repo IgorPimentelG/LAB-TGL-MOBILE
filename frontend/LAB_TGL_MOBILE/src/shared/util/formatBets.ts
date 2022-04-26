@@ -11,13 +11,12 @@ function formatNumbers(numbers: string) {
 }
 
 function formatPrice(price: number): string {
-    return new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(price);
+    return new Intl.NumberFormat('pt-BR', { minimumFractionDigits: 2 }).format(price);
 }
 
 function formatDate(date: string): string {
     return new Intl.DateTimeFormat('pt-BR').format(new Date(date));
 }
-
 
 // Auxiliar
 function sortNumbers(number1: number, number2: number) {

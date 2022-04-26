@@ -7,6 +7,7 @@ import Logo from './Logo';
 import Line from './Line';
 import IconButton from './IconButton';
 import TypeGameButton from './TypeGameButton';
+import IconScroll from './IconScroll';
 
 export { 
     TextMarketing,
@@ -17,5 +18,6 @@ export {
     Logo, 
     Line,
     IconButton,
-    TypeGameButton
+    TypeGameButton,
+    IconScroll
 };

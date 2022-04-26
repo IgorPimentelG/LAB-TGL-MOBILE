@@ -27,7 +27,7 @@ const CardUserBet: React.FC<{ data: Bet }> = ({ data }) => {
                 <Numbers>{choosenNumbersFormated}</Numbers>
                 <ContainerInfo>
                     <LabelInfo>
-                        {dateFormated} - ({priceFormated})
+                        {dateFormated} - (R$ {priceFormated})
                     </LabelInfo>
                 </ContainerInfo>
                 <LabelType color={game.color}>{game.type}</LabelType>

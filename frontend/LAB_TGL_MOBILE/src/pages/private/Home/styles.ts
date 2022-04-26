@@ -9,8 +9,20 @@ export const RootContainer = styled.View`
 
 export const ContainerTypeGame = styled.View`
     align-items: center;
-    margin-top: 15px;
+    margin-top: 5px;
     width: 100%;
+`;
+
+export const ContainerBets = styled.View`
+    width: 100%;
+    height: 220px;
+    margin: 10px 0;
+`;
+
+export const ContainerNav = styled.View`
+    flex: 1;
+    justify-content: flex-end;
+    align-items: center;
 `;
 
 export const Label = styled.Text`
@@ -20,7 +32,3 @@ export const Label = styled.Text`
     color: ${({theme}) => theme.colors.label};
 `;
 
-export const ContainerBets = styled.View`
-    margin: 10px 0;
-    height: 40%;
-`;

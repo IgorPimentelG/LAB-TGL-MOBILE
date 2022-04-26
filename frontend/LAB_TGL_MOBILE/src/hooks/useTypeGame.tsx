@@ -35,23 +35,31 @@ const useTypeGame = (config?: Config) => {
         } 
     }, [typesGames]);
 
+    useEffect(() => {
+        if( typesGames.length > 0 && (!config || !config?.multipleSelection)) {
+            setSelectedGames([typesGames[0]]);
+        }
+    }, [typesGames]);
+
     function changeGameHandler(id: number) {
 
         const game = typesGames.filter((item) => item.id === id)[0];
 
-        if( config && config.multipleSelection ) { 
+        if( config && config.multipleSelection ) { // Múltipla seleção
             const isEnabled = verifyStatus(id);
 
-            if( isEnabled ) {                       // Desativar game
+            console.log(isEnabled);
+
+            if( isEnabled ) {  // Desativar game
                 setSelectedGames((currentState) => {
                     return currentState.filter((item) => item.id !== id);
                 });
-            } else {                                // Ativar game
+            } else {  // Ativar game
                 setSelectedGames((currentState) => {
                     return [...currentState, game];
                 });
             }
-        } else {
+        } else {  // Seleção única
             setSelectedGames([game]);
         }
     }
@@ -78,7 +86,7 @@ const useTypeGame = (config?: Config) => {
         return typesGames.filter((type) => type.id === id)[0];
     }
 
-    return { configSwitchGame, searchConfigGame };
+    return { configSwitchGame, searchConfigGame, selectedGames };
 }
 
 export { useTypeGame };

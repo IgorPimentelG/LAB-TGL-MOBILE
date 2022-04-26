@@ -3,10 +3,10 @@ import { NavButtonType } from '@shared/model/enums/form';
 
 export const Touchable = styled.TouchableOpacity`
     padding: 20px;
-    width: 100%;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    
 `;
 
 export const Label = styled.Text<any>`

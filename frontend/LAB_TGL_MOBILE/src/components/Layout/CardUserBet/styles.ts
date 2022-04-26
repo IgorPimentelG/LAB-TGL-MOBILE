@@ -2,12 +2,14 @@ import styled from 'styled-components/native';
 
 export const RootContainer = styled.View`
     flex-direction: row;
-    width: 90%;
+    width: 100%;
+    height: 100px;
     margin: 5px 0;
 `;
 
 export const ContainerContent = styled.View`
     padding: 5px 10px;
+    justify-content: center;
 `;
 
 export const ContainerInfo = styled.View`
