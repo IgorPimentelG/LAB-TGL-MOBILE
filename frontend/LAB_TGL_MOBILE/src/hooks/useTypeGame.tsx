@@ -10,6 +10,16 @@ type Config = {
     multipleSelection: boolean;
 };
 
+const initialGame = {
+    id: 0,
+    color: '',
+    description: '',
+    max_number: 0,
+    price: 0,
+    range: 0,
+    type: ''
+}
+
 const useTypeGame = (config?: Config) => {
 
     const dispatch = useDispatch();
@@ -19,7 +29,7 @@ const useTypeGame = (config?: Config) => {
     const { loadGames } = gamesActions;
     const { enableLoading, disableLoading } = loadingActions;
 
-    const [selectedGames, setSelectedGames] = useState<Game[]>([]);
+    const [selectedGames, setSelectedGames] = useState<Game[]>([initialGame]);
 
     // Consultar os games disponíveis
     useEffect(() => {

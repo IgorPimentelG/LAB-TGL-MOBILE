@@ -15,6 +15,7 @@ import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native'
 import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
 import { useTheme } from 'styled-components';
 import { HomeProps } from '@shared/model/types/navigation';
+import { DrawerActions } from '@react-navigation/native';
 
 const Home = ({ navigation }: HomeProps) => {
 
@@ -33,13 +34,17 @@ const Home = ({ navigation }: HomeProps) => {
     const [filterGames, setFilterGames] = useState<Bet[]>([]);
     const [showIconScroll, setShowIconScroll] = useState(false);
 
+    useLayoutEffect(() => {
+        navigation.dispatch(DrawerActions.closeDrawer());
+    }, []);
+
     // Consultar apostas do usuário logado
     useLayoutEffect(() => {
         const fetchAccount = async () => {
             dispatch(enableLoading('Carregando apostas...'));
             try {
-                    const response = await account();
-                    dispatch(updateBetsUser(response.data));
+                const response = await account();
+                dispatch(updateBetsUser(response.data));
             } catch(error: any) {
                 //  setError('Não foi possível recuperar suas apostas.');
             }
@@ -54,8 +59,8 @@ const Home = ({ navigation }: HomeProps) => {
         if( userBets.length > 0 ) {
             let filter: Bet[] = [];
 
-            if( selectedGames.length === 0 ) {   // Nenhum filtro selecionado 
-                filter = [...userBets];
+            if( selectedGames[0].id === 0 ) {   // Nenhum filtro selecionado 
+                filter = [...userBets];                
             } else {  // Existe filtro selecionado
                 const gamesID = selectedGames.map((game) => game.id);
                 filter = userBets.filter((bet) => {
@@ -74,6 +79,8 @@ const Home = ({ navigation }: HomeProps) => {
 
                 return [...filter.sort(sortBets)];
             });
+
+            console.log(filterGames.length);
         }
     }, [selectedGames, userBets]);
 

@@ -16,7 +16,7 @@ const useAuth = () => {
 
         dispatch(enableLoading(' '));
 
-        const token = await AsyncStorage.getItem('@token');
+        const token = await AsyncStorage.getItem('token');
 
         if( token ) {
             const userToken: Token = JSON.parse(token);
