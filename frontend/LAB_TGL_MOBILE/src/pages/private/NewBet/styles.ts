@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
-export const RootContainer = styled.View`
+export const RootContainer = styled.ScrollView`
     flex: 1;
-    padding: 20px;
+    padding: 20px 20px 0 20px;
 `;
 
 export const ContainerTitle = styled.View`
@@ -14,6 +14,13 @@ export const ContainerTypeGame = styled.View`
     flex-direction: row;
     width: 100%;
     margin: 10px 0 15px 0;
+`;
+
+export const ContainerOptions = styled.View`
+    margin-top: 10px;
+    margin-bottom: 50px;
+    justify-content: space-around;
+    flex-direction: row;
 `;
 
 export const LabelGame = styled.Text`

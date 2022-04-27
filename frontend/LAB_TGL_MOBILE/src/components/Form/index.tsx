@@ -37,7 +37,7 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
             <RootContainer>
                {!keyboardVisible && (
                     <ContainerText>
-                        <Text>{'The Greatest App'}</Text>
+                        <Text>{'The\nGreatest\nApp'}</Text>
                         <TextHighlighted>for</TextHighlighted>
                         <Text>LOTTERY</Text>
                     </ContainerText>

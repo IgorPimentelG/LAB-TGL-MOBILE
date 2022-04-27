@@ -15,6 +15,7 @@ declare module 'styled-components' {
 
         main: {
             green900: string;
+            green700: string;
             red700: string;
         },
 

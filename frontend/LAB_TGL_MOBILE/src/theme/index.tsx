@@ -16,6 +16,7 @@ const Theme: React.FC<{ children: any }> = ({ children }) => {
 
         main: {
             green900: '#B5C401',
+            green700: '#27C383',
             red700: '#C30'
         },
 
