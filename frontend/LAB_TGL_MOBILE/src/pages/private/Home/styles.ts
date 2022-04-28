@@ -4,7 +4,7 @@ export const RootContainer = styled.View`
     flex: 1;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px;
+    padding: 20px 10px 10px 10px;
 `;
 
 export const ContainerTypeGame = styled.View`
@@ -14,17 +14,17 @@ export const ContainerTypeGame = styled.View`
 `;
 
 export const ContainerBets = styled.View`
-    width: 100%;
-    height: 220px;
-    margin: 10px 0;
+    width: 95%;
+    height: 335px;
+    margin: 15px 0;
     justify-content: center;
     align-items: center;
 `;
 
 export const ContainerNav = styled.View`
     flex: 1;
-    justify-content: center;
     align-items: center;
+    justify-content: flex-end;
 `;
 
 export const Label = styled.Text`

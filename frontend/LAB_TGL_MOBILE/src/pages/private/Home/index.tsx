@@ -3,19 +3,19 @@ import { RootState } from '@store/index';
 import { user } from '@shared/services';
 import { useSort } from '@hooks/useSort';
 import { Entypo } from '@expo/vector-icons';
+import { useTheme } from 'styled-components';
 import { Bet } from '@shared/model/types/bets';
 import { userActions } from '@store/user-slice';
 import { useTypeGame } from '@hooks/useTypeGame';
 import { loadingActions } from '@store/loading-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavButtonType } from '@shared/model/enums/form';
+import { HomeProps } from '@shared/model/types/navigation';
 import { CardUserBet, ModalError } from '@components/Layout';
+import FilterGame from '@components/Layout/ContainerFilterGame';
 import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
-import { useTheme } from 'styled-components';
-import { HomeProps } from '@shared/model/types/navigation';
-import { DrawerActions } from '@react-navigation/native';
 
 const Home = ({ navigation }: HomeProps) => {
 
@@ -34,10 +34,6 @@ const Home = ({ navigation }: HomeProps) => {
     const [filterGames, setFilterGames] = useState<Bet[]>([]);
     const [showIconScroll, setShowIconScroll] = useState(false);
 
-    useLayoutEffect(() => {
-        navigation.dispatch(DrawerActions.closeDrawer());
-    }, []);
-
     // Consultar apostas do usuário logado
     useLayoutEffect(() => {
         const fetchAccount = async () => {
@@ -49,7 +45,7 @@ const Home = ({ navigation }: HomeProps) => {
                 //  setError('Não foi possível recuperar suas apostas.');
             }
             dispatch(disableLoading());
-        }   
+        }
 
         fetchAccount();
     }, [userBets]);
@@ -114,9 +110,11 @@ const Home = ({ navigation }: HomeProps) => {
                 <Title>RECENT GAMES</Title>
                 <ContainerTypeGame>
                     <Label>Filters</Label>
-                    { configSwitchGame().map((item, index) => (
-                        <TypeGameButton key={index} config={item}/>
-                    ))}
+                    <FilterGame>
+                        { configSwitchGame().map((item, index) => (
+                            <TypeGameButton key={index} config={item}/>
+                        ))}
+                    </FilterGame>
                 </ContainerTypeGame>     
                 <ContainerBets>
                     {filterGames.length === 0 &&  ( 

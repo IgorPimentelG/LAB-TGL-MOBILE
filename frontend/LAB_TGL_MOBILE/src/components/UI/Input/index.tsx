@@ -17,6 +17,7 @@ const Input: React.FC<{ configInput: IConfigInput }> = ({ configInput}) => {
                     <TextField 
                         {...params}
                         autoCapitalize='none'
+                        autoCompleteType="off"
                         onChangeText={onChange}
                         value={value}
                         selectionColor={theme.main.green900}

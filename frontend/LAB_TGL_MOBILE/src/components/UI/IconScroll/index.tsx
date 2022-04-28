@@ -1,6 +1,6 @@
 import { Container } from './styles';
 import { useTheme } from 'styled-components';
-import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
 
 const IconScroll = () => {
 
@@ -8,8 +8,8 @@ const IconScroll = () => {
 
     return(
         <Container>
-            <AntDesign 
-                name='circledown' 
+            <Entypo 
+                name='select-arrows' 
                 color={theme.text.gray800}
                 size={25}
             />
