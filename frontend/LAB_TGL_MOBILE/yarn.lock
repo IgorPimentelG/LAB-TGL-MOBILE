@@ -2719,7 +2719,7 @@ expo-asset@~8.4.6:
 
 expo-community-flipper@^44.0.3:
   version "44.0.3"
-  resolved "https://registry.npmjs.org/expo-community-flipper/-/expo-community-flipper-44.0.3.tgz"
+  resolved "https://registry.yarnpkg.com/expo-community-flipper/-/expo-community-flipper-44.0.3.tgz#1acb5fb9b955ab27aa87e2910a598faa82dcaa3d"
   integrity sha512-CXCpZOIMe+NrRPatIaCJq8s5kBXM9Edx5eJm3cxnbxuIwh97raV4bQ1O8p1wWrp3hHMY2MrEDs0D5iA7rUD+RQ==
   dependencies:
     "@expo/config-plugins" "^4.0.15"
@@ -4862,10 +4862,10 @@ react-native-codegen@^0.0.6:
     jscodeshift "^0.11.0"
     nullthrows "^1.1.1"
 
-react-native-flipper@^0.143.0:
-  version "0.143.0"
-  resolved "https://registry.npmjs.org/react-native-flipper/-/react-native-flipper-0.143.0.tgz"
-  integrity sha512-SjjdKv1kcImBhM3ueI2YR2IvKWBSznhXfw5LVdn81K/UOMvjosxp74rxOWqL/SVXwV+cTErzZvfFrq/EHcC0NQ==
+react-native-flipper@^0.144.0:
+  version "0.144.0"
+  resolved "https://registry.yarnpkg.com/react-native-flipper/-/react-native-flipper-0.144.0.tgz#a2fbc746a8b515850e2886af46a12a3b42f1731a"
+  integrity sha512-YQmZeZhiQbThZ0QhspiKl9eMXiBuYayZjVpWPmMES6NhLBolncB4IgaTzvDseQt8QiD+jfqe2PCrX6eeJiQVxw==
 
 react-native-flipper@^0.34.0:
   version "0.34.0"

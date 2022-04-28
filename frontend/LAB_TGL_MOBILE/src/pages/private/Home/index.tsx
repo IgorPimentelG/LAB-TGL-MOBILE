@@ -28,7 +28,7 @@ const Home = ({ navigation }: HomeProps) => {
     const { configSwitchGame, selectedGames } = useTypeGame({ multipleSelection: true });
 
     const userBets = useSelector<RootState, Bet[]>((state) => state.auth.data!.bets!);
-    
+
     const [error, setError] = useState<string | null>();
     const [filterGames, setFilterGames] = useState<Bet[]>([]);
     const [showIconScroll, setShowIconScroll] = useState(false);

@@ -1,29 +1,49 @@
-import React, { useLayoutEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import Form from "@components/Form";
-import { useForm } from 'react-hook-form';
+import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
-import { UpdateAccountProps } from '@shared/model/types/navigation';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FormUpdateAccount } from '@shared/schemas';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/index';
+import { user, auth } from '@shared/services';
 import { User } from '@shared/model/types/user';
+import { loadingActions } from '@store/loading-slice';
 
-const UpdateAccount = ({ navigation }: UpdateAccountProps) => {
+const UpdateAccount = () => {
 
-    const user = useSelector<RootState, User>((state) => state.auth.data!);
-    const { control, handleSubmit, formState: { errors }, setValue } = useForm({
-        resolver: yupResolver(FormUpdateAccount)
+    const dispatch = useDispatch();
+    const userData = useSelector<RootState, User>((state) => state.auth.data!);
+    const { control, handleSubmit, formState: { errors } } = useForm({
+        resolver: yupResolver(FormUpdateAccount),
+        defaultValues: { name: userData.name, email: userData.email }
     });
+    
+    const { findUser } = auth();
+    const { updateMyUser } = user();
+    const { enableLoading, disableLoading } = loadingActions;
 
-    useLayoutEffect(() => {
-        console.log(user.name);
-        setValue('name', user.name);
-        setValue('email', user.email);
-    });
+    const [error, setError] = useState<string | null>();
+    const [warning, setWarning] = useState<string | null>();
 
-    function onSubmit() {
+    async function onSubmit(data: FieldValues) {
+        const { name, email } = data;
 
+        if(name !== userData.name || email !== userData.email) {
+            try {
+                dispatch(enableLoading('Atualizando conta'));
+                const emailResponse = await findUser(email);
+                
+                if( emailResponse.data.id === userData.id ) {
+                    await updateMyUser({ name, email });
+                } else {
+                    setWarning('E-mail não disponível');
+                }
+            } catch(error: any) {
+                setError('Não foi possível atualizar sua conta');
+            }
+            dispatch(disableLoading());
+        }
     }
 
     return(
@@ -38,7 +58,7 @@ const UpdateAccount = ({ navigation }: UpdateAccountProps) => {
             inputs: [
                 { 
                     params: { placeholder: 'Name' }, 
-                    controller: { name: 'name', hasError: !!errors.name ,control }
+                    controller: { name: 'name', hasError: !!errors.name, control }
                 },
                 {
                     params: { placeholder: 'Email' },
@@ -51,7 +71,7 @@ const UpdateAccount = ({ navigation }: UpdateAccountProps) => {
                 onPressHandler: handleSubmit(onSubmit)
             }
         }}/>
-    </React.Fragment>
+        </React.Fragment>
     );
 }
 

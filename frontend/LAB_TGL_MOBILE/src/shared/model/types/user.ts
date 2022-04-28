@@ -46,6 +46,14 @@ export type UpdateUserResponse = {
 
 export type MyAccountResponse = {
 	data: { 
-		user: User;
+		id: number;
+		email: string;
+		is_admin: number;
+		name: string;
+		token: string;
+		token_created_at: string;
+		created_at: string;
+		updated_at: string;
+		bets: Bet[]
 	}
 }

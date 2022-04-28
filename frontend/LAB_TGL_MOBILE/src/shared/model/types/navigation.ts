@@ -11,6 +11,7 @@ export type PublicStackParamList = {
 export type PrivateDrawerParamList = {
     Home: undefined;
     Account: undefined;
+    UpdateAccount: undefined;
 }
 
 export type PrivateStackParamList = {

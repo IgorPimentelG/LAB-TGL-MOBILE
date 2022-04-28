@@ -8,6 +8,7 @@ import { loadingActions } from '@store/loading-slice';
 const useAuth = () => {
 
     const dispatch = useDispatch();
+
     const { account } = user();
     const { authenticate } = userActions;
     const { enableLoading, disableLoading } = loadingActions;
@@ -18,7 +19,7 @@ const useAuth = () => {
 
         const token = await AsyncStorage.getItem('token');
 
-        if( token ) {
+        if( token ) { 
             const userToken: Token = JSON.parse(token);
             const currentDate = new Date();
             const tokenExpires = new Date(userToken.expires_at);
@@ -26,7 +27,11 @@ const useAuth = () => {
             // Verificar se o token ainda não expirou
             if( currentDate <= tokenExpires ) {
                 const response = await account();
-                dispatch(authenticate(response.data));
+                const payload = {
+                    user: response.data,
+                    token: token
+                }
+                dispatch(authenticate(payload));
             }
         }
 

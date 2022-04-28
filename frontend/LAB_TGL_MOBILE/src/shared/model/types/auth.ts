@@ -25,7 +25,15 @@ export type LoginResponse = {
 
 export type FindUserResponse = {
     data: {
-        user: User;
+        created_at: string;
+        email: string;
+        id: number;
+        is_admin: number;
+        name: string;
+        token: string;
+        token_created_at: string;
+        updated_at: string;
+
     }
 }
 

@@ -14,6 +14,8 @@ function formatError(inputs: string[], errors: any): string {
 function mountError(error: AxiosError): Error {
     const { response } = error;
 
+    console.log(error);
+
     const message = response?.data.message ? response.data.message : response?.data.error.message;
 
     return {

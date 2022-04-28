@@ -25,7 +25,7 @@ export interface IConfigLink {
 
 export interface IConfigController {
     name: string;
-    control: Control;
+    control: any;
     hasError: boolean;
 }
 

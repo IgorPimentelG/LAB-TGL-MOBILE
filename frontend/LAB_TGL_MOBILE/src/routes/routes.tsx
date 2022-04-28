@@ -11,8 +11,10 @@ const Routes = () => {
     const isAuthenticated = useSelector<RootState>((state) => state.auth.isAuthenticated);
 
     useEffect(() => {
-        verifyToken();
-    });
+        if( !isAuthenticated ) {
+            verifyToken();
+        }
+    }, [isAuthenticated]);
 
     return(
         <React.Fragment>
