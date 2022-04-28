@@ -92,11 +92,7 @@ const useTypeGame = (config?: Config) => {
         });
     }
 
-    function searchConfigGame(id: number): Game {
-        return typesGames.filter((type) => type.id === id)[0];
-    }
-
-    return { configSwitchGame, searchConfigGame, selectedGames };
+    return { configSwitchGame, selectedGames };
 }
 
 export { useTypeGame };

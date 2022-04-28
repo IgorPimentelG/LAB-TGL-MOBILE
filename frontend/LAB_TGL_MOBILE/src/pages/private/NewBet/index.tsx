@@ -1,9 +1,12 @@
-import { useState, useEffect, useLayoutEffect } from 'react';
+import { useState, useLayoutEffect, useEffect } from 'react';
 import { Title, TypeGameButton, ButtonAction, IconButton } from '@components/UI';
-import { ContainerFilterGame } from '@components/Layout';
+import { ContainerFilterGame, NumericKeyboard } from '@components/Layout';
 import { useTypeGame } from '@hooks/useTypeGame';
 import { NewBetProps } from '@shared/model/types/navigation';
 import useKeyboard from '@hooks/useKeyboard';
+import { KeyboardConfiguration } from '@shared/model/types/keyboard';
+import { useTheme } from 'styled-components';
+import { Ionicons } from '@expo/vector-icons';
 import { 
     RootContainer, 
     ContainerTypeGame, 
@@ -11,11 +14,10 @@ import {
     LabelGame, 
     Label, 
     LabelDescription, 
-    ContainerOptions
+    ContainerOptionsRow,
+    ContainerButtonSmall,
+    ContainerButtonLarge
 } from './styles';
-import { KeyboardConfiguration } from '@shared/model/types/keyboard';
-import { useTheme } from 'styled-components';
-
 
 const NewBet = ({ navigation }: NewBetProps ) => {
 
@@ -37,6 +39,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
         onAddNumber: addNumberHandler,
         onRemoveNumber: removeNumberHandler
     });
+    const keys = keysConfig(selectedGame);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -58,6 +61,10 @@ const NewBet = ({ navigation }: NewBetProps ) => {
             )
         });
     }, []);
+
+    useEffect(() => {
+        clearGameHandler();
+    }, [selectedGame]);
     
     function completeGameHandler() {
         // Verificar se ainda restam números para serem completados
@@ -77,11 +84,16 @@ const NewBet = ({ navigation }: NewBetProps ) => {
                 }
                 remainingNumbers--;
             }   
+            setChosenNumbers((currentNumbers) => [...currentNumbers, ...numbersSorted]);
         }
     }
 
     function clearGameHandler() {
         setChosenNumbers([]);
+    }
+
+    function addToCartHandler() {
+
     }
 
     function addNumberHandler(newNumber: number) {
@@ -122,16 +134,30 @@ const NewBet = ({ navigation }: NewBetProps ) => {
                 { selectedGame.description }
             </LabelDescription>
 
-           
+           <NumericKeyboard config={keys}/>
 
-            <ContainerOptions>
-                <ButtonAction onPress={completeGameHandler}>
-                    Complete game
+            <ContainerOptionsRow>
+                <ContainerButtonSmall>
+                    <ButtonAction onPress={completeGameHandler}>
+                        Complete game
                     </ButtonAction>
-                <ButtonAction onPress={clearGameHandler}>
-                    Clear game
+                </ContainerButtonSmall>
+                <ContainerButtonSmall>
+                    <ButtonAction onPress={clearGameHandler}>
+                        Clear game
+                    </ButtonAction>
+                </ContainerButtonSmall>
+            </ContainerOptionsRow>
+            
+            <ContainerButtonLarge>
+                <ButtonAction highlighted onPress={addToCartHandler}>
+                    <Ionicons
+                        name='cart-outline'
+                        size={25}
+                    />
+                    Add to cart
                 </ButtonAction>
-            </ContainerOptions>
+            </ContainerButtonLarge>
            
         </RootContainer>
     );

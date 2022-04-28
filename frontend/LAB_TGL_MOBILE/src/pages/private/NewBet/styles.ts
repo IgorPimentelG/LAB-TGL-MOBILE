@@ -1,4 +1,5 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
 
 export const RootContainer = styled.ScrollView`
     flex: 1;
@@ -16,11 +17,21 @@ export const ContainerTypeGame = styled.View`
     margin: 10px 0 15px 0;
 `;
 
-export const ContainerOptions = styled.View`
+export const ContainerOptionsRow = styled.View`
     margin-top: 10px;
-    margin-bottom: 50px;
-    justify-content: space-around;
     flex-direction: row;
+    justify-content: center;
+`;
+
+export const ContainerButtonSmall = styled.View`
+    width: ${Math.floor(Dimensions.get('window').width / 2.3) + 'px'};
+    margin-right: 10px;
+`;
+
+export const ContainerButtonLarge = styled.View`
+    padding-left: 5px;
+    padding-right: 15px;
+    margin-bottom: 50px;
 `;
 
 export const LabelGame = styled.Text`

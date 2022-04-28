@@ -7,10 +7,10 @@ export const RootContainer = styled.View`
     margin-top: 5px;
 `;
 
-export const Button = styled.TouchableOpacity`
+export const Button = styled.TouchableOpacity<any>`
     justify-content: center;
     align-items: center;
-    background-color: #ADC0C4;
+    background-color: ${({activeColor, isActive}) => isActive ? activeColor : '#ADC0C4'};
     border-radius: 50px;
     margin: 5px;
     height: 50px;

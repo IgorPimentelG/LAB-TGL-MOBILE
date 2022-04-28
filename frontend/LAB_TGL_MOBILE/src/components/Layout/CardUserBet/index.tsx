@@ -1,3 +1,4 @@
+import { memo } from 'react';
 import { Line } from "@components/UI";
 import { useTypeGame } from "@hooks/useTypeGame";
 import { Bet } from "@shared/model/types/bets";
@@ -10,15 +11,23 @@ import {
     Numbers,
     LabelType, 
 } from "./styles";
+import { Game } from '@shared/model/types/games';
+import { RootState } from '@store/index';
+import { useSelector } from 'react-redux';
 
 const CardUserBet: React.FC<{ data: Bet }> = ({ data }) => {
+
+    const typesGames = useSelector<RootState, Game[]>((state) => state.games.types);
 
     const choosenNumbersFormated = formatNumbers(data.choosen_numbers);
     const priceFormated = formatPrice(data.price);
     const dateFormated = formatDate(data.created_at);
 
-    const { searchConfigGame } = useTypeGame();
-    const game = searchConfigGame(data.game_id);
+    const game = typesGames.filter((item) => item.id === data.game_id)[0];
+
+    if( !game ) {
+        return <></>;
+    }
 
     return(
         <RootContainer>

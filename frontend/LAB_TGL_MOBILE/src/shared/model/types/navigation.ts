@@ -15,7 +15,7 @@ export type PrivateDrawerParamList = {
 }
 
 export type PrivateStackParamList = {
-    RecentGames: NativeStackScreenProps<PrivateDrawerParamList>;
+    RecentGames: undefined;
     NewBet: undefined;
     Cart: undefined;
     UpdateAccount: undefined;

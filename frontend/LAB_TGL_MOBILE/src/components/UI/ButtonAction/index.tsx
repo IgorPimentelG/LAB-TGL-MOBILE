@@ -1,7 +1,7 @@
-import { Touchable, Label } from "./styles";
+import { Touchable, Label } from './styles';
 
 const ButtonAction: React.FC<{
-    children: string;
+    children: any;
     highlighted?: boolean;
     onPress: () => void;
 }> = ({ children, highlighted, onPress }) => {

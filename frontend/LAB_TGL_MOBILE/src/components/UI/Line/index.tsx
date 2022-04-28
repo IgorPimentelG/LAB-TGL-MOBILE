@@ -1,6 +1,6 @@
-import { ContainerLine } from "./styeles";
+import { ContainerLine } from './styeles';
 
-const Line: React.FC<{color: string}> = ({ color }) => {
+const Line: React.FC<{ color: string }> = ({ color }) => {
     return(
         <ContainerLine color={color}/>
     );

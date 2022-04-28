@@ -1,8 +1,8 @@
 import styled from 'styled-components/native';
 
 export const Touchable = styled.TouchableOpacity<any>`
-    margin: 5px 0;
-    width: 45%;
+    margin: 5px;
+    width: 100%;
     padding: 10px;
     border-radius: 5px;
     align-items: center;
