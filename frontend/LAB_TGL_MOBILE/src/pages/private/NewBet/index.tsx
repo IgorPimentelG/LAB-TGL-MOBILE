@@ -1,10 +1,8 @@
-import { useState, useLayoutEffect } from 'react';
-import { NumericKeyboard } from '@components/Layout';
-import { Title, TypeGameButton } from '@components/UI';
+import { useState, useEffect, useLayoutEffect } from 'react';
+import { Title, TypeGameButton, ButtonAction, IconButton } from '@components/UI';
+import { ContainerFilterGame } from '@components/Layout';
 import { useTypeGame } from '@hooks/useTypeGame';
-import { FlatList } from 'react-native';
 import { NewBetProps } from '@shared/model/types/navigation';
-import ButtonAction from '@components/UI/ButtonAction';
 import useKeyboard from '@hooks/useKeyboard';
 import { 
     RootContainer, 
@@ -16,6 +14,7 @@ import {
     ContainerOptions
 } from './styles';
 import { KeyboardConfiguration } from '@shared/model/types/keyboard';
+import { useTheme } from 'styled-components';
 
 
 const NewBet = ({ navigation }: NewBetProps ) => {
@@ -29,6 +28,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
     
     const { configSwitchGame, selectedGames } = useTypeGame({multipleSelection: false});
     
+    const theme = useTheme();
     const games = configSwitchGame();
     const selectedGame = selectedGames[0];
 
@@ -39,8 +39,25 @@ const NewBet = ({ navigation }: NewBetProps ) => {
     });
 
     useLayoutEffect(() => {
-        setKeyboard(keysConfig(selectedGame));
-    }, [keysConfig, selectedGame]);
+        navigation.setOptions({
+            headerRight: () => (
+                <IconButton config={{
+                    icon: 'cart-outline',
+                    size: 30,
+                    color: theme.text.gray800,
+                    onPress: () => navigation.replace('Cart')
+                }}/>
+            ),
+            headerLeft: () => (
+                <IconButton config={{
+                    icon: 'arrow-back',
+                    size: 25,
+                    color: theme.text.gray800,
+                    onPress: () => navigation.replace('RecentGames')
+                }}/>
+            )
+        });
+    }, []);
     
     function completeGameHandler() {
         // Verificar se ainda restam números para serem completados
@@ -93,12 +110,11 @@ const NewBet = ({ navigation }: NewBetProps ) => {
             <Label>Choose a game</Label>
 
             <ContainerTypeGame>
-                <FlatList
-                    data={games}
-                    keyExtractor={(game) => game.id.toString()}
-                    renderItem={({item}) => <TypeGameButton config={item}/>}
-                    horizontal={true}
-                />
+                <ContainerFilterGame>
+                    { configSwitchGame().map((item, index) => (
+                        <TypeGameButton key={index} config={item}/>
+                    ))}
+                </ContainerFilterGame>
             </ContainerTypeGame>
 
             <Label>Fill your bet</Label>
@@ -106,16 +122,16 @@ const NewBet = ({ navigation }: NewBetProps ) => {
                 { selectedGame.description }
             </LabelDescription>
 
-           <NumericKeyboard config={keyboard} />
+           
 
-           <ContainerOptions>
-               <ButtonAction onPress={completeGameHandler}>
-                   Complete game
+            <ContainerOptions>
+                <ButtonAction onPress={completeGameHandler}>
+                    Complete game
+                    </ButtonAction>
+                <ButtonAction onPress={clearGameHandler}>
+                    Clear game
                 </ButtonAction>
-               <ButtonAction onPress={clearGameHandler}>
-                   Clear game
-                </ButtonAction>
-           </ContainerOptions>
+            </ContainerOptions>
            
         </RootContainer>
     );

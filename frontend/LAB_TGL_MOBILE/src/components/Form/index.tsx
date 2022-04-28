@@ -35,7 +35,7 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
     return(
         <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
             <RootContainer>
-               {!keyboardVisible && (
+               {!keyboardVisible && configForm.marketing && (
                     <ContainerText>
                         <Text>{'The\nGreatest\nApp'}</Text>
                         <TextHighlighted>for</TextHighlighted>
@@ -59,7 +59,7 @@ const Form: React.FC<{ configForm: IForm }> = ({ configForm }) => {
                     )}
                     <NavButton config={configForm.primaryButton}/>
                 </Card>
-                <NavButton config={configForm.secondaryButton}/>
+                { configForm.secondaryButton && <NavButton config={configForm.secondaryButton}/>}
             </RootContainer>
         </TouchableWithoutFeedback>
     );

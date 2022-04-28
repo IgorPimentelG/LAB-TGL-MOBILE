@@ -65,6 +65,7 @@ const ResetPassword = ({ navigation }: ResetPasswordProps) => {
             />
             <Form configForm={{
                 title: 'Reset password',
+                marketing: true,
                 inputs: [
                     { 
                         params: { placeholder: 'Email' }, 

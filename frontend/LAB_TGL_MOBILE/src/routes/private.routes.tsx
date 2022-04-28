@@ -4,11 +4,11 @@ import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 import { userActions } from '@store/user-slice';
 import { MenuDrawer } from '@components/Layout';
-import { Home, Account, NewBet } from '@pages/private';
+import { Home, Account, NewBet, Cart, UpdateAccount } from '@pages/private';
 import { NavigationContainer } from '@react-navigation/native';
 import { createDrawerNavigator } from '@react-navigation/drawer';
-import { PrivateDrawerParamList, PrivateStackParamList } from '@shared/model/types/navigation';
 import { createStackNavigator } from '@react-navigation/stack';
+import { PrivateDrawerParamList, PrivateStackParamList } from '@shared/model/types/navigation';
 
 const PrivateRoutes = () => {
 
@@ -78,32 +78,23 @@ const PrivateRoutes = () => {
     return(
         <NavigationContainer>
             <Stack.Navigator 
-                screenOptions={({ navigation }) => ({
+                screenOptions={{
                     headerTitleAlign: 'center',
                     headerTitleStyle: { 
                         fontWeight: 'bold',
                         fontStyle: 'italic',
                         color: theme.text.gray800
-                    },
-                    headerLeft: () => (
-                        <IconButton config={{
-                            icon: 'arrow-back',
-                            size: 25,
-                            color: theme.text.gray800,
-                            onPress: () => navigation.replace('RecentGames')
-                        }}/>
-                    )
-                })
+                    }
+                }
              }>
                 <Stack.Screen 
                     name='RecentGames' 
                     component={DrawerNavigator}
                     options={{ headerShown: false }}
                 />
-                <Stack.Screen 
-                    name='NewBet' 
-                    component={NewBet}
-                />
+                <Stack.Screen name='NewBet' component={NewBet}/>
+                <Stack.Screen name='Cart' component={Cart}/>
+                <Stack.Screen name='UpdateAccount' component={UpdateAccount} options={{ title: 'My Account' }}/>
             </Stack.Navigator>
         </NavigationContainer>
     );

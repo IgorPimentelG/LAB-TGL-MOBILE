@@ -7,7 +7,11 @@ const useSort = () => {
 
     const games = useSelector<RootState, Game[]>((state) => state.games.types);
 
-    function searchGameName(id: number) {
+    function searchGameName(id: number): string {
+        if( games.length === 0 ) {
+            return '';
+        }
+        
         return games.filter((game) => game.id === id)[0].type;
     }
 

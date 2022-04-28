@@ -70,6 +70,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
             />
             <Form configForm={{
                 title: 'Registration',
+                marketing: true,
                 inputs: [               
                     { 
                         params: { placeholder: 'name' }, 

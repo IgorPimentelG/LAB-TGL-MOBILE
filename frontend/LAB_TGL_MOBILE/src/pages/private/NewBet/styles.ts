@@ -2,7 +2,7 @@ import styled from 'styled-components/native';
 
 export const RootContainer = styled.ScrollView`
     flex: 1;
-    padding: 20px 20px 0 20px;
+    padding: 20px 10px 0 10px;
 `;
 
 export const ContainerTitle = styled.View`

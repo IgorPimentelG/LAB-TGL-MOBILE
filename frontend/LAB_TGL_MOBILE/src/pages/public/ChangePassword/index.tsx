@@ -63,6 +63,7 @@ const ChangePassword = ( { navigation , route}: ChangePasswordProps ) => {
             />
             <Form configForm={{
                 title: 'Change password',
+                marketing: true,
                 inputs: [
                     { 
                         params: { placeholder: 'Password', secureTextEntry: true }, 

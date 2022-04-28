@@ -7,6 +7,7 @@ import Line from './Line';
 import IconButton from './IconButton';
 import TypeGameButton from './TypeGameButton';
 import IconScroll from './IconScroll';
+import ButtonAction from './ButtonAction';
 
 export { 
     Title, 
@@ -17,5 +18,6 @@ export {
     Line,
     IconButton,
     TypeGameButton,
-    IconScroll
+    IconScroll, 
+    ButtonAction
 };

@@ -14,9 +14,11 @@ const UserSlice = createSlice({
     initialState,
     reducers: {
         authenticate: (_state, action) => {
-            const user = {...action.payload.user, bets: []};
             return {
-                data: user,
+                data: {
+                    bets: [],
+                    ...action.payload.user,
+                },
                 token: action.payload.token,
                 isAuthenticated: true,
                 lastSession: null

@@ -74,7 +74,8 @@ const SignIn = ({ navigation } : SignInProps) => {
                 onConfirm={onConfirmModal}
             />
             <Form configForm={{
-                title: 'Authentication',           
+                title: 'Authentication', 
+                marketing: true,  
                 inputs: [
                     { 
                         params: { placeholder: 'Email' }, 

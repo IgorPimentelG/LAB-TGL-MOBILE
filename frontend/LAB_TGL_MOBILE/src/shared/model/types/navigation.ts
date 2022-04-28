@@ -16,6 +16,8 @@ export type PrivateDrawerParamList = {
 export type PrivateStackParamList = {
     RecentGames: NativeStackScreenProps<PrivateDrawerParamList>;
     NewBet: undefined;
+    Cart: undefined;
+    UpdateAccount: undefined;
 }
 
 // Public routes
@@ -26,6 +28,7 @@ export type ResetPasswordProps = NativeStackScreenProps<PublicStackParamList, 'R
 export type ChangePasswordProps = NativeStackScreenProps<PublicStackParamList, 'ChangePassword'>;
 
 // Private routes
+export type NewBetProps = NativeStackScreenProps<PrivateStackParamList, 'NewBet'>;
 export type HomeProps = NativeStackScreenProps<PrivateStackParamList, 'RecentGames'>;
 export type AccountProps = NativeStackScreenProps<PrivateDrawerParamList, 'Account'>;
-export type NewBetProps = NativeStackScreenProps<PrivateStackParamList, 'NewBet'>;
+export type UpdateAccountProps = NativeStackScreenProps<PrivateStackParamList, 'UpdateAccount'>;

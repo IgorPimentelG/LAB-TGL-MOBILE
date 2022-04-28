@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { RootState } from '@store/index';
 import { user } from '@shared/services';
 import { useSort } from '@hooks/useSort';
@@ -11,8 +11,7 @@ import { loadingActions } from '@store/loading-slice';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavButtonType } from '@shared/model/enums/form';
 import { HomeProps } from '@shared/model/types/navigation';
-import { CardUserBet, ModalError } from '@components/Layout';
-import FilterGame from '@components/Layout/ContainerFilterGame';
+import { CardUserBet, ModalError, ContainerFilterGame } from '@components/Layout';
 import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
@@ -29,26 +28,26 @@ const Home = ({ navigation }: HomeProps) => {
     const { configSwitchGame, selectedGames } = useTypeGame({ multipleSelection: true });
 
     const userBets = useSelector<RootState, Bet[]>((state) => state.auth.data!.bets!);
-
+    
     const [error, setError] = useState<string | null>();
     const [filterGames, setFilterGames] = useState<Bet[]>([]);
     const [showIconScroll, setShowIconScroll] = useState(false);
 
     // Consultar apostas do usuário logado
-    useLayoutEffect(() => {
+    useEffect(() => {
         const fetchAccount = async () => {
             dispatch(enableLoading('Carregando apostas...'));
             try {
                 const response = await account();
                 dispatch(updateBetsUser(response.data));
             } catch(error: any) {
-                //  setError('Não foi possível recuperar suas apostas.');
+                setError('Não foi possível recuperar suas apostas.');
             }
             dispatch(disableLoading());
         }
 
         fetchAccount();
-    }, [userBets]);
+    }, []);
 
     // Filter games
     useEffect(() => {
@@ -75,8 +74,6 @@ const Home = ({ navigation }: HomeProps) => {
 
                 return [...filter.sort(sortBets)];
             });
-
-            console.log(filterGames.length);
         }
     }, [selectedGames, userBets]);
 
@@ -110,11 +107,11 @@ const Home = ({ navigation }: HomeProps) => {
                 <Title>RECENT GAMES</Title>
                 <ContainerTypeGame>
                     <Label>Filters</Label>
-                    <FilterGame>
+                    <ContainerFilterGame>
                         { configSwitchGame().map((item, index) => (
                             <TypeGameButton key={index} config={item}/>
                         ))}
-                    </FilterGame>
+                    </ContainerFilterGame>
                 </ContainerTypeGame>     
                 <ContainerBets>
                     {filterGames.length === 0 &&  ( 

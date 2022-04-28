@@ -31,8 +31,9 @@ export interface IConfigController {
 
 export interface IForm {
     title: string;
+    marketing?: boolean;
     link?: IConfigLink;
     inputs: IConfigInput[];
     primaryButton: IConfigNavButton;
-    secondaryButton: IConfigNavButton;
+    secondaryButton?: IConfigNavButton;
 }

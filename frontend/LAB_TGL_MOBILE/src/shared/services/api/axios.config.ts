@@ -30,14 +30,17 @@ api.interceptors.response.use(
     async (response) => {
 
         const urlRequest = response.request._url;
+        const hasToken = await AsyncStorage.getItem('token');
 
-        // Verificar se o token não é do reset-password
-        if( !urlRequest.match(/.{1,}\/reset+$/g) ) {
-            const token = response.data.token;
-    
-            if( token ) {
-                await AsyncStorage.clear();
-                await AsyncStorage.setItem('token', JSON.stringify(token));
+        if( hasToken === null ) {
+            // Verificar se o token não é do reset-password
+            if( !urlRequest.match(/.{1,}\/reset+$/g) ) {
+                const token = response.data.token;
+
+                if( token ) {
+                    await AsyncStorage.clear();
+                    await AsyncStorage.setItem('token', JSON.stringify(token));
+                }
             }
         }
         
