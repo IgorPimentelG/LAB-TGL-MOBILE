@@ -14,7 +14,7 @@ export const Touchable = styled.TouchableOpacity`
 `;
 
 export const ContainerContent = styled.View<any>`
-    padding: 5px 10px;
+    padding: 5px 15px;
     width: 90%;
     margin-left: 10px;
     border-left-width: 5px;

@@ -9,14 +9,15 @@ const CardNewBet: React.FC<{
     price: number;
     game: string;
     colorGame: string;
-}> = ({ numbers, price, game, colorGame }) => {
+    onRemove: () => void
+}> = ({ numbers, price, game, colorGame, onRemove }) => {
 
     const numbersFormated = formatNumbers(numbers.map((item) => String(item)).join(','));
     const priceFormated = formatPrice(price);
 
     return(
         <Container>
-            <Touchable>
+            <Touchable onPress={onRemove}>
                 <Ionicons
                     name='trash-outline'
                     size={25}

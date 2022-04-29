@@ -1,24 +1,39 @@
-import { Label, Touchable } from "./styles";
-import { IConfigNavButton } from "@shared/model/interfaces/form";
-import { Ionicons } from '@expo/vector-icons';
+import { Label, Touchable } from './styles';
 import { useTheme } from 'styled-components';
-import { NavButtonType } from "@shared/model/enums/form";
+import { Ionicons } from '@expo/vector-icons';
+import { NavButtonType } from '@shared/model/enums/form';
+import { IConfigNavButton } from '@shared/model/interfaces/form';
+import { useLayoutEffect, useState } from 'react';
 
 const NavButton: React.FC<{ config: IConfigNavButton }> = ({ config }) => {
 
     const theme = useTheme();
+    const [color, setColor] = useState<string>(theme.main.green900);
 
-    const iconColor = config.type === NavButtonType.PRIMARY ? theme.main.green900 : theme.text.gray800;
     const iconSize = 25;
+
+    useLayoutEffect(() => {
+        switch(config.type) {
+            case NavButtonType.PRIMARY:
+                setColor(theme.main.green900);
+                break;
+            case NavButtonType.SECONDARY:
+                setColor(theme.text.gray800);
+                break;
+            case NavButtonType.HIGHLIGHTED:
+                setColor(theme.main.green700);
+                break;
+        }
+    }, []);
 
     return(
         <Touchable onPress={config.onPressHandler}>
-            <Label type={config.type}>
+            <Label color={color}>
                 { config.iconArrowLeft && (
                     <Ionicons 
                         name='arrow-back-outline' 
                         size={iconSize} 
-                        color={iconColor}
+                        color={color}
                     /> 
                 )}
 
@@ -28,7 +43,7 @@ const NavButton: React.FC<{ config: IConfigNavButton }> = ({ config }) => {
                     <Ionicons
                         name='arrow-forward-outline' 
                         size={iconSize}
-                        color={iconColor}
+                        color={color}
                     /> 
                 )}
             </Label>          

@@ -14,8 +14,5 @@ export const Label = styled.Text<any>`
     font-weight: bold;
     font-size: 32px;
     text-transform: capitalize;
-    color: ${
-        ({theme, type}) => 
-            type === NavButtonType.PRIMARY ? theme.main.green900 : theme.text.gray800
-    };
+    color: ${({color}) => color};
 `;

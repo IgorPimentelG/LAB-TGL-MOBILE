@@ -1,4 +1,5 @@
 export enum NavButtonType {
     PRIMARY = 'PRIMARY',
-    SECONDARY = 'SECONDARY'
+    SECONDARY = 'SECONDARY',
+    HIGHLIGHTED = 'HIGHLIGHTED'
 }

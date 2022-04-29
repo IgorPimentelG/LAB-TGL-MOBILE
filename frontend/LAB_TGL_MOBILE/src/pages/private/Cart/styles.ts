@@ -1,4 +1,7 @@
 import styled from 'styled-components/native';
+import { Dimensions } from 'react-native';
+
+const { height: heightScreen } = Dimensions.get('window');
 
 export const RootContainer = styled.View`
     flex: 1;
@@ -18,6 +21,7 @@ export const ContainerButton = styled.View`
 
 export const ContainerTotal = styled.View`
     flex-direction: row;
+    margin-top: 15px;
 `;
 
 export const Label = styled.Text`
@@ -34,6 +38,8 @@ export const LabelTotal = styled(Label)`
     margin: 0 0 20px 5px;
 `;
 
-export const ContainerBets = styled.View`
-    height: 350px;
+export const ContainerBets = styled.View<any>`
+    ${({lengthBets}) => lengthBets > 3 && `
+        height: ${heightScreen > 700 ? '290px' : '340px'}
+    `}
 `;
