@@ -13,8 +13,14 @@ import { NavButtonType } from '@shared/model/enums/form';
 import { HomeProps } from '@shared/model/types/navigation';
 import { CardUserBet, ModalError, ContainerFilterGame } from '@components/Layout';
 import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
-import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav, ContainerWarning } from './styles';
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent, ScrollView } from 'react-native';
+import { 
+    ContainerTypeGame, 
+    RootContainer, 
+    Label, 
+    ContainerBets, 
+    ContainerNav, 
+    ContainerWarning } from './styles';
 
 const Home = ({ navigation }: HomeProps) => {
 
@@ -58,7 +64,6 @@ const Home = ({ navigation }: HomeProps) => {
                 filter = [...userBets];            
             } else {  // Existe filtro selecionado
                 const gamesID = selectedGames.map((game) => game.id);
-                console.log(gamesID);
                 filter = userBets.filter((bet) => {
                     const index = gamesID.indexOf(bet.game_id);
                     if( index !== -1 ) {
@@ -104,44 +109,49 @@ const Home = ({ navigation }: HomeProps) => {
                 onConfirm={onConfirmModal}
                 message={error!}
             />
-            <RootContainer>
-                <Title>RECENT GAMES</Title>
-                <ContainerTypeGame>
-                    <Label>Filters</Label>
-                    <ContainerFilterGame>
-                        { configSwitchGame().map((item, index) => (
-                            <TypeGameButton key={index} config={item}/>
-                        ))}
-                    </ContainerFilterGame>
-                </ContainerTypeGame>     
-                <ContainerBets>
-                    {filterGames.length === 0 &&  ( 
-                        <ContainerWarning>
-                            <Label>Nenhuma Aposta Encontrada</Label>
-                            <Entypo name='emoji-sad' size={25} color={theme.text.gray100} />
-                        </ContainerWarning>
-                    )}
-                    {filterGames.length > 0 && 
-                        <FlatList
-                            onScroll={scrollListener}
-                            keyExtractor={(item) => item.id.toString()}
-                            data={filterGames}
-                            renderItem={({item}) => <CardUserBet data={item}/>}
+            <ScrollView>
+                <RootContainer>
+                    <Title>RECENT GAMES</Title>
+                    <ContainerTypeGame>
+                        <Label>Filters</Label>
+                        <ContainerFilterGame>
+                            { configSwitchGame().map((item, index) => (
+                                <TypeGameButton key={index} config={item}/>
+                            ))}
+                        </ContainerFilterGame>
+                    </ContainerTypeGame>     
+                    <ContainerBets>
+                        {filterGames.length === 0 &&  ( 
+                            <ContainerWarning>
+                                <Label>Nenhuma Aposta Encontrada</Label>
+                                <Entypo name='emoji-sad' size={25} color={theme.text.gray100} />
+                            </ContainerWarning>
+                        )}
+                        {filterGames.length > 0 && 
+                            <ScrollView horizontal contentContainerStyle={{width: '100%'}}>
+                                <FlatList
+                                    onScroll={scrollListener}
+                                    keyExtractor={(item) => item.id.toString()}
+                                    data={filterGames}
+                                    contentContainerStyle={{ flexGrow: 1 }}
+                                    renderItem={({item}) => <CardUserBet data={item}/>}
+                                />
+                            </ScrollView>
+                        }
+                    </ContainerBets>
+                    {showIconScroll && <IconScroll/>}
+                    <ContainerNav>
+                        <NavButton
+                            config={{
+                                label: 'New Bet',
+                                type: NavButtonType.PRIMARY,
+                                iconArrowRight: true,
+                                onPressHandler: newBerHandler
+                            }}
                         />
-                    }
-                </ContainerBets>
-                {showIconScroll && <IconScroll/>}
-                <ContainerNav>
-                    <NavButton
-                        config={{
-                            label: 'New Bet',
-                            type: NavButtonType.PRIMARY,
-                            iconArrowRight: true,
-                            onPressHandler: newBerHandler
-                        }}
-                    />
-                </ContainerNav>
-            </RootContainer>
+                    </ContainerNav>
+                </RootContainer>
+            </ScrollView>
         </React.Fragment>
     );
 }

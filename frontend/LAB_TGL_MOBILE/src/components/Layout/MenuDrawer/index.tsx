@@ -1,7 +1,7 @@
 import { Logo } from '@components/UI';
-import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 import { View } from 'react-native';
 import { ContainerLogo, RootContainer } from './styles';
+import { DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
 
 const MenuDrawer = (props: any) => {
     return(

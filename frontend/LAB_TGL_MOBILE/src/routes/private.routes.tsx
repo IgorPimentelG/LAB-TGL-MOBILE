@@ -4,10 +4,10 @@ import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
 import { userActions } from '@store/user-slice';
 import { MenuDrawer } from '@components/Layout';
-import { Home, Account, NewBet, Cart, UpdateAccount } from '@pages/private';
 import { NavigationContainer } from '@react-navigation/native';
-import { createDrawerNavigator } from '@react-navigation/drawer';
 import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
+import { Home, Account, NewBet, Cart, UpdateAccount } from '@pages/private';
 import { PrivateDrawerParamList, PrivateStackParamList } from '@shared/model/types/navigation';
 
 const PrivateRoutes = () => {

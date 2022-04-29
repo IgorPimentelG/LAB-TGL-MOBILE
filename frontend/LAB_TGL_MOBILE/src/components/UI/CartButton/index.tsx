@@ -1,7 +1,5 @@
-import { useTheme } from 'styled-components';
-import IconButton from '../IconButton';
-import { ContainerButtonCart, ContainerInfo, InfoCart } from './styles'; 
 import { Ionicons } from '@expo/vector-icons';
+import { ContainerButtonCart, ContainerInfo, InfoCart } from './styles'; 
 
 const CartButton: React.FC<{
     navigation: any;

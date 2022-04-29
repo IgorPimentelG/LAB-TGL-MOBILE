@@ -1,9 +1,9 @@
 import { Logo } from '@components/UI';
+import { RootState } from '@store/index';
 import { useSelector } from 'react-redux';
 import { useTheme } from 'styled-components';
 import { Modal, ActivityIndicator } from 'react-native';
 import { RootContainer, ContainerLogo, ContainerMessage, Message } from './styles';
-import { RootState } from '@store/index';
 
 const Loading = () => {
 

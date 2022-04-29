@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { createSlice } from '@reduxjs/toolkit';
-import { IUserStore } from './../../shared/model/interfaces/states';
+import { IUserStore } from '@shared/model/interfaces/states';
 
 const initialState: IUserStore = {
     data: null,

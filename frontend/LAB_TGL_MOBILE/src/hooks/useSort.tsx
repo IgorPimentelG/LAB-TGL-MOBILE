@@ -1,7 +1,7 @@
-import { Bet } from "@shared/model/types/bets";
-import { Game } from "@shared/model/types/games";
 import { RootState } from "@store/index";
 import { useSelector } from "react-redux";
+import { Bet } from "@shared/model/types/bets";
+import { Game } from "@shared/model/types/games";
 
 const useSort = () => {
 

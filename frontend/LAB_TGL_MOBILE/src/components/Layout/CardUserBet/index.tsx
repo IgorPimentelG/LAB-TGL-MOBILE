@@ -1,7 +1,8 @@
-import { memo } from 'react';
 import { Line } from "@components/UI";
-import { useTypeGame } from "@hooks/useTypeGame";
+import { RootState } from '@store/index';
+import { useSelector } from 'react-redux';
 import { Bet } from "@shared/model/types/bets";
+import { Game } from '@shared/model/types/games';
 import { formatDate, formatNumbers, formatPrice } from "@shared/util/formatBets";
 import { 
     RootContainer,
@@ -11,9 +12,7 @@ import {
     Numbers,
     LabelType, 
 } from "./styles";
-import { Game } from '@shared/model/types/games';
-import { RootState } from '@store/index';
-import { useSelector } from 'react-redux';
+
 
 const CardUserBet: React.FC<{ data: Bet }> = ({ data }) => {
 

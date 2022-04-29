@@ -1,8 +1,8 @@
-import React, { useRef, useState } from 'react';
-import { ScrollView, ScrollViewComponent, View } from 'react-native';
-import { Container, Touchable, ContainerButtons, ContainerIconLeft } from './styles';
+import React, { useRef } from 'react';
+import { ScrollView } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
 import { useTheme } from 'styled-components';
+import { Container, Touchable, ContainerButtons, ContainerIconLeft } from './styles';
 
 const ContainerFilterGame = (props: any) => {
 

@@ -20,6 +20,7 @@ import {
     ContainerButtonSmall,
     ContainerButtonLarge,
 } from './styles';
+import { useWindowDimensions } from 'react-native';
 
 
 const NewBet = ({ navigation }: NewBetProps ) => {
@@ -36,6 +37,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
     const games = configSwitchGame();
     const selectedGame = selectedGames[0];
     const { addBet } = cartActions;
+    const { width } = useWindowDimensions();
 
     const { keysConfig } = useKeyboard({ 
         numbersSelected: chosenNumbers, 
@@ -149,22 +151,22 @@ const NewBet = ({ navigation }: NewBetProps ) => {
                     { selectedGame.description }
                 </LabelDescription>
 
-            <NumericKeyboard config={keys}/>
+                <NumericKeyboard config={keys}/>
 
                 <ContainerOptionsRow>
-                    <ContainerButtonSmall>
+                    <ContainerButtonSmall screenWidth={width}>
                         <ButtonAction onPress={completeGameHandler}>
                             Complete game
                         </ButtonAction>
                     </ContainerButtonSmall>
-                    <ContainerButtonSmall>
+                    <ContainerButtonSmall screenWidth={width}>
                         <ButtonAction onPress={clearGameHandler}>
                             Clear game
                         </ButtonAction>
                     </ContainerButtonSmall>
                 </ContainerOptionsRow>
                 
-                <ContainerButtonLarge>
+                <ContainerButtonLarge screenWidth={width}>
                     <ButtonAction highlighted onPress={addToCartHandler}>
                         <Ionicons
                             name='cart-outline'

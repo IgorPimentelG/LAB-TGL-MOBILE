@@ -7,8 +7,8 @@ export const RootContainer = styled.View`
     background-color: rgba(0, 0, 0, 0.7);
 `;
 
-export const Container = styled.View`
-    width: 70%;
+export const Container = styled.View<any>`
+    width: ${({screenWidth}) => screenWidth > 400 ? '50%' : '70%'};
     justify-content: center;
     align-items: center;
     background-color: #FFF;

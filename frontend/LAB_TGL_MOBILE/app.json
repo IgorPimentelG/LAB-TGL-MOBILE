@@ -3,7 +3,7 @@
     "name": "LAB_TGL_MOBILE",
     "slug": "LAB_TGL_MOBILE",
     "version": "1.0.0",
-    "orientation": "auto",
+    "orientation": "default",
     "icon": "./assets/icon.png",
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -12,7 +12,8 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "requireFullScreen": true
     },
     "android": {
       "adaptiveIcon": {

@@ -1,13 +1,9 @@
-import { Card } from '@components/Layout';
 import { Title } from '@components/UI';
-import { RootContainer, ButtonMenu, ContainerIcon } from './styles';
-import { Ionicons } from '@expo/vector-icons';
+import { Card } from '@components/Layout';
 import { useTheme } from 'styled-components';
-import { useSelector } from 'react-redux';
-import { RootState } from '@store/index';
-import { User } from '@shared/model/types/user';
-import { View } from 'react-native'
+import { Ionicons } from '@expo/vector-icons';
 import { AccountProps } from '@shared/model/types/navigation';
+import { RootContainer, ButtonMenu, ContainerIcon } from './styles';
 
 const Account = ({ navigation }: AccountProps) => {
 

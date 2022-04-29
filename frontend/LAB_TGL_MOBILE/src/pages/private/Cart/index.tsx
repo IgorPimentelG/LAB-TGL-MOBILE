@@ -12,8 +12,13 @@ import { NavButtonType } from '@shared/model/enums/form';
 import { CartProps } from '@shared/model/types/navigation';
 import { IconButton, IconScroll, NavButton } from '@components/UI';
 import { ICartStore, IGamesStore } from '@shared/model/interfaces/states';
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
 import { Card, ModalConfirmation, CardNewBet, ModalError } from '@components/Layout';
+import { 
+    FlatList,
+    NativeScrollEvent,
+    NativeSyntheticEvent, 
+    ScrollView 
+} from 'react-native';
 import { 
     ContainerButton, 
     RootContainer, 
@@ -23,7 +28,6 @@ import {
     Label, 
     ContainerBets
 } from './styles';
-import { useSort } from '@hooks/useSort';
 
 const Cart = ({ navigation }: CartProps ) => {
 
@@ -33,7 +37,6 @@ const Cart = ({ navigation }: CartProps ) => {
     const cart = useSelector<RootState, ICartStore>((state) => state.cart);
     const games = useSelector<RootState, IGamesStore>((state) => state.games);
 
-    const { sortBets } = useSort();
     const { removeBet, clearCart } = cartActions;
     const { enableLoading, disableLoading } = loadingActions;
     const { newBet } = bets();
@@ -110,28 +113,30 @@ const Cart = ({ navigation }: CartProps ) => {
     }
 
     async function saveHandler() {
-        if( total >= games.min_cart_value! ) {
-            dispatch(enableLoading('Salvando suas apostas'));
-            try {
-                const bets = cart.cart.map((bet) => ({ game_id: bet.game_id, numbers: bet.numbers }));
-                await newBet({ games: bets });
-                dispatch(clearCart());
-                navigation.replace('RecentGames');
-            } catch(error: any) {
-                setError(error.message);
-            }
-        } else {
-            setError(`É necessário no mínimo R$ ${formatPrice(games.min_cart_value!)} para salvar suas apostas`);
+        dispatch(enableLoading('Salvando suas apostas'));
+        try {
+            const bets = cart.cart.map((bet) => ({ game_id: bet.game_id, numbers: bet.numbers }));
+            await newBet({ games: bets });
+            dispatch(clearCart());
+            navigation.replace('RecentGames');
+        } catch(error: any) {
+            setError(error.message);
         }
         dispatch(disableLoading());
     }
 
     function onSave() {
-        setShowModalConfirm({
-            isVisible: true,
-            message: `Deseja realmente finalizar suas apostas no total de R$ ${formatPrice(total)}`,
-            betID: 0
-        });
+        if( total >= games.min_cart_value! ) {
+            setShowModalConfirm({
+                isVisible: true,
+                message: `Deseja realmente finalizar suas apostas no total de R$ ${formatPrice(total)}`,
+                betID: 0
+            });
+        } else {
+            setError(
+                `É necessário no mínimo R$ ${formatPrice(games.min_cart_value!)} para salvar suas apostas`
+            );
+        }
     }
 
     // Configura o icone de scroll
@@ -158,56 +163,59 @@ const Cart = ({ navigation }: CartProps ) => {
                 onConfirm={confirmErrorHandler}
                 message={error!}
             />
-            <RootContainer>
-                <Card>
-                    <ContainerContent>
-                        <Title>CART</Title>
-
-                        {cart.cart.length === 0 && (
-                            <Label>Carrinho vazio</Label>
-                        )}
-
-                        {cart.cart.length !== 0 && (
-                            <ContainerBets lengthBets={cart.cart.length}>
-                                <FlatList
-                                    data={cart.cart}
-                                    onScroll={scrollListener}
-                                    keyExtractor={(item) => item.id.toString()}
-                                    renderItem={({item}) => {
-                                        const game = searchGame(item.game_id);
-                                        return(
-                                            <CardNewBet 
-                                                numbers={item.numbers}
-                                                game={game.type}
-                                                price={game.price}
-                                                colorGame={game.color}
-                                                onRemove={removeBetHandler.bind(null, item.id)}
-                                            />
-                                        );
-                                    }
-                                }
-                                />
-                            </ContainerBets>
-                        )}
-                        { showIconScroll && (
-                            <IconScroll/>
-                        )}
-
-                        <ContainerTotal>
+            <ScrollView>
+                <RootContainer>
+                    <Card>
+                        <ContainerContent>
                             <Title>CART</Title>
-                            <LabelTotal>TOTAL: R$ {formatPrice(total)}</LabelTotal>
-                        </ContainerTotal>
-                    </ContainerContent>
-                    <ContainerButton>
-                        <NavButton config={{
-                            label: 'Save',
-                            type: NavButtonType.HIGHLIGHTED,
-                            iconArrowRight: true,
-                            onPressHandler: onSave
-                        }}/>
-                    </ContainerButton>
-                </Card>
-            </RootContainer>
+
+                            {cart.cart.length === 0 && (
+                                <Label>Carrinho vazio</Label>
+                            )}
+
+                            {cart.cart.length !== 0 && (
+                                <ContainerBets lengthBets={cart.cart.length}>
+                                    <FlatList
+                                        key={Date.now()}
+                                        data={cart.cart}
+                                        onScroll={scrollListener}
+                                        keyExtractor={(item) => item.id.toString()}
+                                        renderItem={({item}) => {
+                                            const game = searchGame(item.game_id);
+                                            return(
+                                                <CardNewBet 
+                                                    numbers={item.numbers}
+                                                    game={game.type}
+                                                    price={game.price}
+                                                    colorGame={game.color}
+                                                    onRemove={removeBetHandler.bind(null, item.id)}
+                                                />
+                                            );
+                                        }
+                                    }
+                                    />
+                                </ContainerBets>
+                            )}
+                            { showIconScroll && (
+                                <IconScroll/>
+                            )}
+
+                            <ContainerTotal>
+                                <Title>CART</Title>
+                                <LabelTotal>TOTAL: R$ {formatPrice(total)}</LabelTotal>
+                            </ContainerTotal>
+                        </ContainerContent>
+                        <ContainerButton>
+                            <NavButton config={{
+                                label: 'Save',
+                                type: NavButtonType.HIGHLIGHTED,
+                                iconArrowRight: true,
+                                onPressHandler: onSave
+                            }}/>
+                        </ContainerButton>
+                    </Card>
+                </RootContainer>
+            </ScrollView>
         </React.Fragment>
     );
 }

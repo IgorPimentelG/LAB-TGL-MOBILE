@@ -4,6 +4,7 @@ export const Container = styled.View`
     width: 100%;
     margin: 5px 0;
     flex-direction: row;
+    justify-content: center;
 `;
 
 export const ContainerButtons = styled.View`

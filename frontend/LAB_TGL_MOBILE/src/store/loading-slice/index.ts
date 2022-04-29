@@ -1,5 +1,5 @@
-import { ILoadingStore } from './../../shared/model/interfaces/states';
 import { createSlice } from '@reduxjs/toolkit';
+import { ILoadingStore } from '@shared/model/interfaces/states';
 
 const initialState: ILoadingStore = {
     isLoading: false,

@@ -1,7 +1,7 @@
-import { Controller } from "react-hook-form";
-import { Container, TextField } from "./styles";
-import { IConfigInput } from "@shared/model/interfaces/form";
-import { useTheme } from "styled-components";
+import { Controller } from 'react-hook-form';
+import { useTheme } from 'styled-components';
+import { Container, TextField } from './styles';
+import { IConfigInput } from '@shared/model/interfaces/form';
 
 const Input: React.FC<{ configInput: IConfigInput }> = ({ configInput}) => {
 
@@ -17,7 +17,7 @@ const Input: React.FC<{ configInput: IConfigInput }> = ({ configInput}) => {
                     <TextField 
                         {...params}
                         autoCapitalize='none'
-                        autoCompleteType="off"
+                        autoCompleteType='off'
                         onChangeText={onChange}
                         value={value}
                         selectionColor={theme.main.green900}

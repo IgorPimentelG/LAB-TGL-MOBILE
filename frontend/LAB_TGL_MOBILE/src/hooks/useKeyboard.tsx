@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Game } from '@shared/model/types/games';
 import { DataKeyboard, Key, KeyboardConfiguration } from '@shared/model/types/keyboard';
 

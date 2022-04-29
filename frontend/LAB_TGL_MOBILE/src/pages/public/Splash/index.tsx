@@ -1,9 +1,9 @@
-import { Logo } from '@components/UI';
-import { SplashProps } from '@shared/model/types/navigation';
 import { useEffect } from 'react';
-import { RootContainer } from './styles';
-import { useSelector } from 'react-redux';
+import { Logo } from '@components/UI';
 import { RootState } from '@store/index';
+import { useSelector } from 'react-redux';
+import { RootContainer } from './styles';
+import { SplashProps } from '@shared/model/types/navigation';
 
 const Splash = ({ navigation }: SplashProps) => {
 

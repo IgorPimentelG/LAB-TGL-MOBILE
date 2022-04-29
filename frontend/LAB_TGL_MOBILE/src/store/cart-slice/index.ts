@@ -1,5 +1,5 @@
-import { ICartStore } from '@shared/model/interfaces/states';
 import { createSlice } from '@reduxjs/toolkit';
+import { ICartStore } from '@shared/model/interfaces/states';
 
 const initialState: ICartStore = {
     cart: []

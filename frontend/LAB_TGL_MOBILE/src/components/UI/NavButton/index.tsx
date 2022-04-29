@@ -1,9 +1,9 @@
 import { Label, Touchable } from './styles';
 import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
+import { useLayoutEffect, useState } from 'react';
 import { NavButtonType } from '@shared/model/enums/form';
 import { IConfigNavButton } from '@shared/model/interfaces/form';
-import { useLayoutEffect, useState } from 'react';
 
 const NavButton: React.FC<{ config: IConfigNavButton }> = ({ config }) => {
 

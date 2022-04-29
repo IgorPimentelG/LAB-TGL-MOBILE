@@ -1,9 +1,10 @@
 import styled from 'styled-components/native';
 
-export const RootContainer = styled.View`
+export const RootContainer = styled.View<any>`
     flex: 1;
     justify-content: center;
     align-items: center;
+    padding: ${({screenWidth}) => screenWidth > 650 ? '30px 0' : '0'};
 `;
 
 export const ContainerTitle = styled.View`

@@ -1,7 +1,7 @@
 import { Title } from '@components/UI';
-import { Modal } from 'react-native';
-import { ButtonConfirm, Container, ContainerOptions, ButtonCancel, LabelButton } from './styles';
+import { Modal, useWindowDimensions } from 'react-native';
 import { Text, RootContainer } from '../ModalError/styles';
+import { ButtonConfirm, Container, ContainerOptions, ButtonCancel, LabelButton } from './styles';
 
 const ModalConfirmation: React.FC<{
     isVisible: boolean;
@@ -9,10 +9,13 @@ const ModalConfirmation: React.FC<{
     onCancel: () => void;
     onConfirm: () => void;
 }> = ({ isVisible, message, onCancel, onConfirm }) => {
+
+    const { width } = useWindowDimensions();
+
     return(
         <Modal transparent={true} animationType={'fade'} visible={isVisible}>
             <RootContainer>
-                <Container>
+                <Container screenWidth={width}>
                     <Title>Atenção</Title>
                     <Text>{message}</Text>
                     <ContainerOptions>

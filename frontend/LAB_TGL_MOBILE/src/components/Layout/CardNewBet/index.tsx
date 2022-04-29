@@ -1,8 +1,7 @@
 import { Container, ContainerContent, ContainerInfo, LabelPrice, Touchable } from './styles';
 import { Ionicons } from '@expo/vector-icons';
-import { Line } from '@components/UI';
-import { formatNumbers, formatPrice } from '@shared/util/formatBets';
 import { LabelType, Numbers } from '../CardUserBet/styles';
+import { formatNumbers, formatPrice } from '@shared/util/formatBets';
 
 const CardNewBet: React.FC<{
     numbers: number[];

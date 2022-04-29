@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Form from "@components/Form";
-import { FieldValues, useForm } from 'react-hook-form';
-import { NavButtonType } from '@shared/model/enums/form';
-import { yupResolver } from '@hookform/resolvers/yup';
-import { FormUpdateAccount } from '@shared/schemas';
-import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '@store/index';
+import { formatError } from '@shared/util';
 import { user, auth } from '@shared/services';
 import { User } from '@shared/model/types/user';
+import { FormUpdateAccount } from '@shared/schemas';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { loadingActions } from '@store/loading-slice';
+import { FieldValues, useForm } from 'react-hook-form';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavButtonType } from '@shared/model/enums/form';
 import { ModalConfirmation, ModalError } from '@components/Layout';
-import { formatError } from '@shared/util';
 
 const UpdateAccount = () => {
 
@@ -66,7 +66,6 @@ const UpdateAccount = () => {
                 data: { name, email }
             });
         }
-        
     }
 
     async function onSubmit(name: any, email: any) {

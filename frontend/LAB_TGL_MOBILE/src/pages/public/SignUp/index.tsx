@@ -3,15 +3,14 @@ import Form from '@components/Form';
 import { Keyboard } from 'react-native';
 import { user } from '@shared/services';
 import { useDispatch } from 'react-redux';
+import { formatError } from '@shared/util';
+import { ModalError } from '@components/Layout';
 import { FormSignUpSchema } from '@shared/schemas';
+import { loadingActions } from '@store/loading-slice';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { SignUpProps } from '@shared/model/types/navigation';
-import { ModalError } from '@components/Layout';
-import { loadingActions } from '@store/loading-slice';
-import { Error } from '@shared/model/interfaces/error';
-import { formatError } from '@shared/util';
 
 const SignUp = ({ navigation }: SignUpProps) => {
 
@@ -45,6 +44,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
 
         try {
            await createUser(userData);
+           navigation.replace('SignIn');
         } catch(error: any) {
             console.log(error);
             setError(error.message);

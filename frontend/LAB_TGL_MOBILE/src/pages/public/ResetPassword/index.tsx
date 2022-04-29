@@ -3,14 +3,14 @@ import Form from '@components/Form';
 import { Keyboard } from 'react-native';
 import { auth } from '@shared/services';
 import { useDispatch } from 'react-redux';
+import { formatError } from '@shared/util';
+import { ModalError } from '@components/Layout';
 import { loadingActions } from '@store/loading-slice';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { FormResetPasswordSchema } from '@shared/schemas';
 import { ResetPasswordProps } from '@shared/model/types/navigation';
-import { formatError } from '@shared/util';
-import { ModalError } from '@components/Layout';
 
 const ResetPassword = ({ navigation }: ResetPasswordProps) => {
 

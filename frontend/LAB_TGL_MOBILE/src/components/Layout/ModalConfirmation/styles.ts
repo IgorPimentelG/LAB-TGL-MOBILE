@@ -1,4 +1,3 @@
-import { TouchableOpacity } from 'react-native';
 import styled from 'styled-components/native';
 
 const Button = styled.TouchableOpacity`
@@ -7,8 +6,8 @@ const Button = styled.TouchableOpacity`
     margin: 5px;
 `;
 
-export const Container = styled.View`
-    width: 90%;
+export const Container = styled.View<any>`
+    width: ${({screenWidth}) => screenWidth > 400 ? '50%' : '90%'};
     padding: 20px;
     justify-content: center;
     align-items: center;

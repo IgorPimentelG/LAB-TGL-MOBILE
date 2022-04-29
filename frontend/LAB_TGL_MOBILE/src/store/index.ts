@@ -4,7 +4,6 @@ import GamesSlice from './games-slice';
 import LoadingSlice from './loading-slice';
 import CartSlice from './cart-slice';
 import reactotron from '../config/reactotron';
-import { compose } from '@reduxjs/toolkit';
 
 const store = configureStore({
     reducer: {

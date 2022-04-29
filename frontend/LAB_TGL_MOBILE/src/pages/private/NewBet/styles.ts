@@ -23,14 +23,14 @@ export const ContainerOptionsRow = styled.View`
     justify-content: center;
 `;
 
-export const ContainerButtonSmall = styled.View`
-    width: ${Math.floor(Dimensions.get('window').width / 2.3) + 'px'};
+export const ContainerButtonSmall = styled.View<any>`
+    width: ${({screenWidth}) => Math.floor(screenWidth / 2.3) + 'px'};
     margin-right: 10px;
 `;
 
-export const ContainerButtonLarge = styled.View`
-    padding-left: 5px;
-    padding-right: 15px;
+export const ContainerButtonLarge = styled.View<any>`
+    padding-left:  ${({screenWidth}) => screenWidth > 400 ? '25px' : '5px'};
+    padding-right: ${({screenWidth}) => screenWidth > 400 ? '32px' : '15px'};
     margin-bottom: 50px;
 `;
 

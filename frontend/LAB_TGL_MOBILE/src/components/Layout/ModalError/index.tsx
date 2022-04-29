@@ -1,4 +1,4 @@
-import { Modal } from 'react-native';
+import { Modal, useWindowDimensions } from 'react-native';
 import { Title } from '@components/UI';
 import { useTheme } from 'styled-components';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
@@ -19,11 +19,12 @@ const ModalError: React.FC<{
 }> = ({ message, isVisible, onConfirm }) => {
 
     const theme = useTheme();
+    const { width } = useWindowDimensions();
 
     return(
         <Modal animationType='slide' transparent={true} visible={isVisible}>
             <RootContainer> 
-               <Container>
+               <Container screenWidth={width}>
                     <ContainerIcon>
                         <MaterialCommunityIcons
                             name='alert-circle'

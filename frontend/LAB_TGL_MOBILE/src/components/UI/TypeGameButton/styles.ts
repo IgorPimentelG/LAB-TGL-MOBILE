@@ -1,8 +1,13 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
 
 export const Touchable = styled.TouchableOpacity<any>`
-    width: ${Math.floor(Dimensions.get('window').width * 0.38) + 'px'};
+    ${({screenWidth}) => screenWidth > 400 && `
+        width: ${Math.floor(screenWidth * 0.40) + 'px'};
+    `};
+
+    ${({screenWidth}) => screenWidth < 400 && `
+        width: ${Math.floor(screenWidth * 0.38) + 'px'};
+    `};
     padding: 6px;
     align-items: center;
     justify-content: center;

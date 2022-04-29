@@ -1,5 +1,5 @@
-import { Ionicons } from '@expo/vector-icons';
 import { Touchable } from './styles';
+import { Ionicons } from '@expo/vector-icons';
 
 interface IConfigIconButton {
     icon: any;

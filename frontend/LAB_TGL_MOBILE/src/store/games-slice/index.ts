@@ -11,7 +11,6 @@ const GamesSlice = createSlice({
     initialState,
     reducers: {
         loadGames: (_state, action) => {
-            console.log(action.payload);
             return {
                 ...action.payload
             }

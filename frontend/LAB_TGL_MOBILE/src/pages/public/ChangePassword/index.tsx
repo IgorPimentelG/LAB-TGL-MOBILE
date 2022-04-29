@@ -1,16 +1,16 @@
 import React, { useEffect, useState } from 'react';
 import Form from '@components/Form';
 import { Keyboard } from 'react-native';
-import { FieldValues, useForm } from 'react-hook-form';
+import { auth } from '@shared/services';
+import { useDispatch } from 'react-redux';
+import { formatError } from '@shared/util';
+import { ModalError } from '@components/Layout';
+import { loadingActions } from '@store/loading-slice';
 import { yupResolver } from '@hookform/resolvers/yup';
+import { FieldValues, useForm } from 'react-hook-form';
 import { NavButtonType } from '@shared/model/enums/form';
 import { FormChangePasswordSchema } from '@shared/schemas';
 import { ChangePasswordProps } from '@shared/model/types/navigation';
-import { auth } from '@shared/services';
-import { useDispatch } from 'react-redux';
-import { loadingActions } from '@store/loading-slice';
-import { ModalError } from '@components/Layout';
-import { formatError } from '@shared/util';
 
 const ChangePassword = ( { navigation , route}: ChangePasswordProps ) => {
 
