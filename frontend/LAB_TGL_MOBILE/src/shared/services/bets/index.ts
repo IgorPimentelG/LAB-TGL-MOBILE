@@ -8,7 +8,7 @@ const bets = () => {
     }
 
     function newBet(games: NewBetPayload): Promise<NewBetResponse> {
-        return api.post('bet/new-bet', JSON.stringify(games));
+        return api.post('bet/new-bet', games);
     }
 
     return { listBet, newBet };

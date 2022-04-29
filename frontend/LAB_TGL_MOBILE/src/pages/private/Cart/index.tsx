@@ -1,19 +1,29 @@
-import React, { useEffect, useLayoutEffect, useState } from "react";
-import { Card, ModalConfirmation } from "@components/Layout";
-import { IconButton, IconScroll, NavButton } from "@components/UI";
-import { CartProps } from "@shared/model/types/navigation";
-import { useTheme } from "styled-components";
-import { ContainerButton, RootContainer, ContainerContent, LabelTotal, ContainerTotal, Label, ContainerBets } from "./styles";
-import { Title } from "@components/UI";
-import { NavButtonType } from "@shared/model/enums/form";
-import { useDispatch, useSelector } from "react-redux";
-import { RootState } from "@store/index";
-import { ICartStore, IGamesStore } from "@shared/model/interfaces/states";
-import { Game } from "@shared/model/types/games";
-import { formatPrice } from "@shared/util/formatBets";
-import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from "react-native";
-import CardNewBet from "@components/Layout/CardNewBet";
-import { cartActions } from "@store/cart-slice";
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { Title } from '@components/UI';
+import { RootState } from '@store/index';
+import { useTheme } from 'styled-components';
+import { bets } from '@shared/services/bets';
+import { cartActions } from '@store/cart-slice';
+import { Game } from '@shared/model/types/games';
+import { loadingActions } from '@store/loading-slice';
+import { formatPrice } from '@shared/util/formatBets';
+import { useDispatch, useSelector } from 'react-redux';
+import { NavButtonType } from '@shared/model/enums/form';
+import { CartProps } from '@shared/model/types/navigation';
+import { IconButton, IconScroll, NavButton } from '@components/UI';
+import { ICartStore, IGamesStore } from '@shared/model/interfaces/states';
+import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
+import { Card, ModalConfirmation, CardNewBet, ModalError } from '@components/Layout';
+import { 
+    ContainerButton, 
+    RootContainer, 
+    ContainerContent, 
+    LabelTotal, 
+    ContainerTotal, 
+    Label, 
+    ContainerBets
+} from './styles';
+import { useSort } from '@hooks/useSort';
 
 const Cart = ({ navigation }: CartProps ) => {
 
@@ -23,9 +33,13 @@ const Cart = ({ navigation }: CartProps ) => {
     const cart = useSelector<RootState, ICartStore>((state) => state.cart);
     const games = useSelector<RootState, IGamesStore>((state) => state.games);
 
+    const { sortBets } = useSort();
     const { removeBet, clearCart } = cartActions;
+    const { enableLoading, disableLoading } = loadingActions;
+    const { newBet } = bets();
     
     const [total, setTotal] = useState(0);
+    const [error, setError] = useState<string | null>(null);
     const [showIconScroll, setShowIconScroll] = useState(false);
     const [showModalConfirm, setShowModalConfirm] = useState({
         isVisible: false,
@@ -66,8 +80,16 @@ const Cart = ({ navigation }: CartProps ) => {
         return games.types.filter((item) => item.id === id)[0];
     }
 
+    function confirmErrorHandler() {
+        setError(null);
+    }
+
     function confirmModalHandler() {
-        dispatch(removeBet(showModalConfirm.betID));
+        if( !!showModalConfirm.betID ) {
+            dispatch(removeBet(showModalConfirm.betID));
+        } else {
+            saveHandler();
+        }
         cancelModalHandler();
     }
 
@@ -84,6 +106,31 @@ const Cart = ({ navigation }: CartProps ) => {
             isVisible: true,
             message: 'Deseja realmente remover o jogo do carrinho?',
             betID: idBet
+        });
+    }
+
+    async function saveHandler() {
+        if( total >= games.min_cart_value! ) {
+            dispatch(enableLoading('Salvando suas apostas'));
+            try {
+                const bets = cart.cart.map((bet) => ({ game_id: bet.game_id, numbers: bet.numbers }));
+                await newBet({ games: bets });
+                dispatch(clearCart());
+                navigation.replace('RecentGames');
+            } catch(error: any) {
+                setError(error.message);
+            }
+        } else {
+            setError(`É necessário no mínimo R$ ${formatPrice(games.min_cart_value!)} para salvar suas apostas`);
+        }
+        dispatch(disableLoading());
+    }
+
+    function onSave() {
+        setShowModalConfirm({
+            isVisible: true,
+            message: `Deseja realmente finalizar suas apostas no total de R$ ${formatPrice(total)}`,
+            betID: 0
         });
     }
 
@@ -105,6 +152,11 @@ const Cart = ({ navigation }: CartProps ) => {
                 message={showModalConfirm.message}
                 onCancel={cancelModalHandler}
                 onConfirm={confirmModalHandler}
+            />
+            <ModalError
+                isVisible={!!error}
+                onConfirm={confirmErrorHandler}
+                message={error!}
             />
             <RootContainer>
                 <Card>
@@ -151,8 +203,7 @@ const Cart = ({ navigation }: CartProps ) => {
                             label: 'Save',
                             type: NavButtonType.HIGHLIGHTED,
                             iconArrowRight: true,
-                            onPressHandler: () => {}
-
+                            onPressHandler: onSave
                         }}/>
                     </ContainerButton>
                 </Card>

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 import { IGamesStore } from '@shared/model/interfaces/states';
 
 const initialState: IGamesStore = {
-    minCartValue: null,
+    min_cart_value: null,
     types: []
 };
 
@@ -11,6 +11,7 @@ const GamesSlice = createSlice({
     initialState,
     reducers: {
         loadGames: (_state, action) => {
+            console.log(action.payload);
             return {
                 ...action.payload
             }

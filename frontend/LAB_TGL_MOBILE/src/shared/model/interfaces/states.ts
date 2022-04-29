@@ -15,7 +15,7 @@ export interface ILoadingStore {
 }
 
 export interface IGamesStore {
-    minCartValue: number | null;
+    min_cart_value: number | null;
     types: Game[];
 }
 

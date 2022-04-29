@@ -1,13 +1,14 @@
-import { useState, useLayoutEffect, useEffect } from 'react';
+import React, { useState, useLayoutEffect, useEffect } from 'react';
 import useKeyboard from '@hooks/useKeyboard';
+import { RootState } from '@store/index';
 import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
-import { useTypeGame } from '@hooks/useTypeGame';
-import { NewBetProps } from '@shared/model/types/navigation';
-import { KeyboardConfiguration } from '@shared/model/types/keyboard';
-import { ContainerFilterGame, NumericKeyboard } from '@components/Layout';
-import { Title, TypeGameButton, ButtonAction, IconButton, CartButton } from '@components/UI';
 import { cartActions } from '@store/cart-slice';
+import { useTypeGame } from '@hooks/useTypeGame';
+import { useDispatch, useSelector } from 'react-redux';
+import { NewBetProps } from '@shared/model/types/navigation';
+import { ContainerFilterGame, ModalError, NumericKeyboard } from '@components/Layout';
+import { Title, TypeGameButton, ButtonAction, IconButton, CartButton } from '@components/UI';
 import { 
     RootContainer, 
     ContainerTypeGame, 
@@ -19,14 +20,14 @@ import {
     ContainerButtonSmall,
     ContainerButtonLarge,
 } from './styles';
-import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '@store/index';
+
 
 const NewBet = ({ navigation }: NewBetProps ) => {
 
     const dispatch = useDispatch();
     const [chosenNumbers, setChosenNumbers] = useState<number[]>([]);
-  
+    const [error, setError] = useState<string | null>(null);
+
     const { configSwitchGame, selectedGames } = useTypeGame({multipleSelection: false});
     
     const totalBets = useSelector<RootState, number>((state) => state.cart.cart.length);
@@ -96,7 +97,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
              }));
              clearGameHandler();
         } else {
-            // error
+            setError(`Restam ${selectedGame.max_number - chosenNumbers.length} a serem escolhidos`);
         }
     }
 
@@ -104,7 +105,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
         if( chosenNumbers.length < selectedGame.max_number ) {
             setChosenNumbers((currentNumbers) => [...currentNumbers, newNumber]);
         } else {
-            // error
+            setError(`Todos os ${selectedGame.max_number} já foram selecionados`);
         }
     }
 
@@ -116,54 +117,65 @@ const NewBet = ({ navigation }: NewBetProps ) => {
         }));
     }
 
+    function confirmErrorHandler() {
+        setError(null);
+    }
+
     return(
-        <RootContainer>
-            <ContainerTitle>
-                <Title>NEW BET </Title>
-                <LabelGame>FOR { selectedGame.type }</LabelGame>
-            </ContainerTitle>
+        <React.Fragment>
+             <ModalError
+                isVisible={!!error}
+                onConfirm={confirmErrorHandler}
+                message={error!}
+            />
+            <RootContainer>
+                <ContainerTitle>
+                    <Title>NEW BET </Title>
+                    <LabelGame>FOR { selectedGame.type }</LabelGame>
+                </ContainerTitle>
 
-            <Label>Choose a game</Label>
+                <Label>Choose a game</Label>
 
-            <ContainerTypeGame>
-                <ContainerFilterGame>
-                    { configSwitchGame().map((item, index) => (
-                        <TypeGameButton key={index} config={item}/>
-                    ))}
-                </ContainerFilterGame>
-            </ContainerTypeGame>
+                <ContainerTypeGame>
+                    <ContainerFilterGame>
+                        { configSwitchGame().map((item, index) => (
+                            <TypeGameButton key={index} config={item}/>
+                        ))}
+                    </ContainerFilterGame>
+                </ContainerTypeGame>
 
-            <Label>Fill your bet</Label>
-            <LabelDescription>
-                { selectedGame.description }
-            </LabelDescription>
+                <Label>Fill your bet</Label>
+                <LabelDescription>
+                    { selectedGame.description }
+                </LabelDescription>
 
-           <NumericKeyboard config={keys}/>
+            <NumericKeyboard config={keys}/>
 
-            <ContainerOptionsRow>
-                <ContainerButtonSmall>
-                    <ButtonAction onPress={completeGameHandler}>
-                        Complete game
+                <ContainerOptionsRow>
+                    <ContainerButtonSmall>
+                        <ButtonAction onPress={completeGameHandler}>
+                            Complete game
+                        </ButtonAction>
+                    </ContainerButtonSmall>
+                    <ContainerButtonSmall>
+                        <ButtonAction onPress={clearGameHandler}>
+                            Clear game
+                        </ButtonAction>
+                    </ContainerButtonSmall>
+                </ContainerOptionsRow>
+                
+                <ContainerButtonLarge>
+                    <ButtonAction highlighted onPress={addToCartHandler}>
+                        <Ionicons
+                            name='cart-outline'
+                            size={25}
+                        />
+                        Add to cart
                     </ButtonAction>
-                </ContainerButtonSmall>
-                <ContainerButtonSmall>
-                    <ButtonAction onPress={clearGameHandler}>
-                        Clear game
-                    </ButtonAction>
-                </ContainerButtonSmall>
-            </ContainerOptionsRow>
+                </ContainerButtonLarge>
             
-            <ContainerButtonLarge>
-                <ButtonAction highlighted onPress={addToCartHandler}>
-                    <Ionicons
-                        name='cart-outline'
-                        size={25}
-                    />
-                    Add to cart
-                </ButtonAction>
-            </ContainerButtonLarge>
-           
-        </RootContainer>
+            </RootContainer>
+        </React.Fragment>
     );
 }
 

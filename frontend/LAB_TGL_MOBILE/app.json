@@ -3,7 +3,7 @@
     "name": "LAB_TGL_MOBILE",
     "slug": "LAB_TGL_MOBILE",
     "version": "1.0.0",
-    "orientation": "portrait",
+    "orientation": "auto",
     "icon": "./assets/icon.png",
     "updates": {
       "fallbackToCacheTimeout": 0
