@@ -26,10 +26,9 @@ const NumericKeyboard: React.FC<{ config: KeyboardConfiguration }> = ({ config }
         <RootContainer>
             <ScrollView horizontal>
                 <FlatList
-                    key={Date.now()}
                     data={keys}
                     keyExtractor={(item) => item.label}
-                    numColumns={width > 400 ? 10 : 5}
+                    numColumns={5}
                     renderItem={({item}) => (
                         <Button 
                             isActive={verifyNumber(item.value)}

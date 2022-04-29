@@ -1,4 +1,4 @@
-import { Touchable, Label } from './styles';
+import { Touchable } from './styles';
 
 const ButtonAction: React.FC<{
     children: any;
@@ -7,9 +7,7 @@ const ButtonAction: React.FC<{
 }> = ({ children, highlighted, onPress }) => {
     return(
         <Touchable onPress={onPress} isHighighted={highlighted}>
-            <Label isHighighted={highlighted}>
-                {children}
-            </Label>
+            {children}
         </Touchable>
     );
 }

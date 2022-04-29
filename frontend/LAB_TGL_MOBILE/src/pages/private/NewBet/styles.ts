@@ -1,5 +1,4 @@
 import styled from 'styled-components/native';
-import { Dimensions } from 'react-native';
 
 export const RootContainer = styled.ScrollView`
     flex: 1;
@@ -34,11 +33,24 @@ export const ContainerButtonLarge = styled.View<any>`
     margin-bottom: 50px;
 `;
 
+export const ContainerIconButton = styled.View`
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+`;
+
 export const LabelGame = styled.Text`
     font-size: 20px;
     font-style: italic;
     text-transform: uppercase;
     color: ${({theme}) => theme.text.gray800};
+`;
+
+export const LabelButton = styled.Text<any>`
+    margin: 0px 5px;
+    color: ${({theme, isHighighted}) => (
+        isHighighted ? '#FFF' : theme.main.green700
+    )};
 `;
 
 export const Label = styled.Text`
@@ -53,3 +65,4 @@ export const LabelDescription = styled(Label)`
     font-weight: normal;
     text-align: justify;
 `;
+

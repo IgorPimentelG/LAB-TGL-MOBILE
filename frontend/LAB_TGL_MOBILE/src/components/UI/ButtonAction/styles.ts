@@ -13,10 +13,3 @@ export const Touchable = styled.TouchableOpacity<any>`
         isHighighted ? theme.main.green700 : 'transparent'
     )};
 `;
-
-export const Label = styled.Text<any>`
-    color: ${({theme, isHighighted}) => (
-        isHighighted ? '#FFF' : theme.main.green700
-    )};
-
-`;

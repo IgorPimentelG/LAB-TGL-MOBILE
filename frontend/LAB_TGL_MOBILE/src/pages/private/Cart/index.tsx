@@ -175,25 +175,27 @@ const Cart = ({ navigation }: CartProps ) => {
 
                             {cart.cart.length !== 0 && (
                                 <ContainerBets lengthBets={cart.cart.length}>
-                                    <FlatList
-                                        key={Date.now()}
-                                        data={cart.cart}
-                                        onScroll={scrollListener}
-                                        keyExtractor={(item) => item.id.toString()}
-                                        renderItem={({item}) => {
-                                            const game = searchGame(item.game_id);
-                                            return(
-                                                <CardNewBet 
-                                                    numbers={item.numbers}
-                                                    game={game.type}
-                                                    price={game.price}
-                                                    colorGame={game.color}
-                                                    onRemove={removeBetHandler.bind(null, item.id)}
-                                                />
-                                            );
+                                    <ScrollView horizontal contentContainerStyle={{ width: '95%'}}>
+                                        <FlatList
+                                            key={Date.now()}
+                                            data={cart.cart}
+                                            onScroll={scrollListener}
+                                            keyExtractor={(item) => item.id.toString()}
+                                            renderItem={({item}) => {
+                                                const game = searchGame(item.game_id);
+                                                return(
+                                                    <CardNewBet 
+                                                        numbers={item.numbers}
+                                                        game={game.type}
+                                                        price={game.price}
+                                                        colorGame={game.color}
+                                                        onRemove={removeBetHandler.bind(null, item.id)}
+                                                    />
+                                                );
+                                            }
                                         }
-                                    }
-                                    />
+                                        />
+                                    </ScrollView>
                                 </ContainerBets>
                             )}
                             { showIconScroll && (

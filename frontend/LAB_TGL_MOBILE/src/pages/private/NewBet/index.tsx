@@ -19,6 +19,8 @@ import {
     ContainerOptionsRow,
     ContainerButtonSmall,
     ContainerButtonLarge,
+    LabelButton,
+    ContainerIconButton,
 } from './styles';
 import { useWindowDimensions } from 'react-native';
 
@@ -156,23 +158,26 @@ const NewBet = ({ navigation }: NewBetProps ) => {
                 <ContainerOptionsRow>
                     <ContainerButtonSmall screenWidth={width}>
                         <ButtonAction onPress={completeGameHandler}>
-                            Complete game
+                            <LabelButton>Complete game</LabelButton>
                         </ButtonAction>
                     </ContainerButtonSmall>
                     <ContainerButtonSmall screenWidth={width}>
                         <ButtonAction onPress={clearGameHandler}>
-                            Clear game
+                            <LabelButton>Clear game</LabelButton>
                         </ButtonAction>
                     </ContainerButtonSmall>
                 </ContainerOptionsRow>
                 
                 <ContainerButtonLarge screenWidth={width}>
                     <ButtonAction highlighted onPress={addToCartHandler}>
-                        <Ionicons
-                            name='cart-outline'
-                            size={25}
-                        />
-                        Add to cart
+                        <ContainerIconButton>
+                            <Ionicons
+                                name='cart-outline'
+                                size={25}
+                                color={'#FFF'}
+                            />
+                            <LabelButton isHighighted>Add to cart</LabelButton>
+                        </ContainerIconButton>
                     </ButtonAction>
                 </ContainerButtonLarge>
             
