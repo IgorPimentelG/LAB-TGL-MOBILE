@@ -8,6 +8,7 @@ import IconButton from './IconButton';
 import TypeGameButton from './TypeGameButton';
 import IconScroll from './IconScroll';
 import ButtonAction from './ButtonAction';
+import CartButton from './CartButton';
 
 export { 
     Title, 
@@ -19,5 +20,6 @@ export {
     IconButton,
     TypeGameButton,
     IconScroll, 
-    ButtonAction
+    ButtonAction,
+    CartButton
 };

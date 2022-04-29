@@ -1,12 +1,13 @@
 import { useState, useLayoutEffect, useEffect } from 'react';
-import { Title, TypeGameButton, ButtonAction, IconButton } from '@components/UI';
-import { ContainerFilterGame, NumericKeyboard } from '@components/Layout';
-import { useTypeGame } from '@hooks/useTypeGame';
-import { NewBetProps } from '@shared/model/types/navigation';
 import useKeyboard from '@hooks/useKeyboard';
-import { KeyboardConfiguration } from '@shared/model/types/keyboard';
 import { useTheme } from 'styled-components';
 import { Ionicons } from '@expo/vector-icons';
+import { useTypeGame } from '@hooks/useTypeGame';
+import { NewBetProps } from '@shared/model/types/navigation';
+import { KeyboardConfiguration } from '@shared/model/types/keyboard';
+import { ContainerFilterGame, NumericKeyboard } from '@components/Layout';
+import { Title, TypeGameButton, ButtonAction, IconButton, CartButton } from '@components/UI';
+import { cartActions } from '@store/cart-slice';
 import { 
     RootContainer, 
     ContainerTypeGame, 
@@ -16,23 +17,24 @@ import {
     LabelDescription, 
     ContainerOptionsRow,
     ContainerButtonSmall,
-    ContainerButtonLarge
+    ContainerButtonLarge,
 } from './styles';
+import { useDispatch, useSelector } from 'react-redux';
+import { RootState } from '@store/index';
 
 const NewBet = ({ navigation }: NewBetProps ) => {
 
-    const [warning, setWarning] = useState<string | null>();
+    const dispatch = useDispatch();
     const [chosenNumbers, setChosenNumbers] = useState<number[]>([]);
-    const [keyboard, setKeyboard] = useState<KeyboardConfiguration>({
-        keys: [],
-        data: {numbersSelected: [], onAddNumber: () => {}, onRemoveNumber: () => {}}
-    });
-    
+  
     const { configSwitchGame, selectedGames } = useTypeGame({multipleSelection: false});
     
+    const totalBets = useSelector<RootState, number>((state) => state.cart.cart.length);
+
     const theme = useTheme();
     const games = configSwitchGame();
     const selectedGame = selectedGames[0];
+    const { addBet } = cartActions;
 
     const { keysConfig } = useKeyboard({ 
         numbersSelected: chosenNumbers, 
@@ -43,14 +45,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
 
     useLayoutEffect(() => {
         navigation.setOptions({
-            headerRight: () => (
-                <IconButton config={{
-                    icon: 'cart-outline',
-                    size: 30,
-                    color: theme.text.gray800,
-                    onPress: () => navigation.replace('Cart')
-                }}/>
-            ),
+            headerRight: () => <CartButton navigation={navigation} totalBets={totalBets}/>,
             headerLeft: () => (
                 <IconButton config={{
                     icon: 'arrow-back',
@@ -60,7 +55,7 @@ const NewBet = ({ navigation }: NewBetProps ) => {
                 }}/>
             )
         });
-    }, []);
+    }, [totalBets]);
 
     useEffect(() => {
         clearGameHandler();
@@ -93,14 +88,23 @@ const NewBet = ({ navigation }: NewBetProps ) => {
     }
 
     function addToCartHandler() {
-
+        if( chosenNumbers.length === selectedGame.max_number ) {
+            dispatch(addBet({ 
+                id: Date.now(),
+                game_id: selectedGame.id,
+                numbers: chosenNumbers
+             }));
+             clearGameHandler();
+        } else {
+            // error
+        }
     }
 
     function addNumberHandler(newNumber: number) {
         if( chosenNumbers.length < selectedGame.max_number ) {
             setChosenNumbers((currentNumbers) => [...currentNumbers, newNumber]);
         } else {
-            setWarning(`Todos os ${selectedGame.max_number} já foram escolhidos`);
+            // error
         }
     }
 

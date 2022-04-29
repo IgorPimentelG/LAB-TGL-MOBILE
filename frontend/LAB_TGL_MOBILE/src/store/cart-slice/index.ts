@@ -1,15 +1,27 @@
+import { ICartStore } from '@shared/model/interfaces/states';
 import { createSlice } from '@reduxjs/toolkit';
+
+const initialState: ICartStore = {
+    cart: []
+}
 
 const CartSlice = createSlice({
     name: 'cart',
-    initialState: {},
+    initialState,
     reducers: {
-        addBet: () => {
-
+        addBet: (state, action) => {
+            return {
+                cart: [...state.cart, action.payload]
+            };
         },
 
-        removeBet: () => {
-            
+        removeBet: (state, action) => {
+            const cart = state.cart.filter((item) => item.id !== action.payload);
+            return { cart };
+        },
+
+        clearCart: () => {
+            return initialState;
         }
     }
 });

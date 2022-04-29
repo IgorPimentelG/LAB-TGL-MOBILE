@@ -33,3 +33,4 @@ export type NewBetProps = NativeStackScreenProps<PrivateStackParamList, 'NewBet'
 export type HomeProps = NativeStackScreenProps<PrivateStackParamList, 'RecentGames'>;
 export type AccountProps = NativeStackScreenProps<PrivateDrawerParamList, 'Account'>;
 export type UpdateAccountProps = NativeStackScreenProps<PrivateStackParamList, 'UpdateAccount'>;
+export type CartProps = NativeStackScreenProps<PrivateStackParamList, 'Cart'>;
