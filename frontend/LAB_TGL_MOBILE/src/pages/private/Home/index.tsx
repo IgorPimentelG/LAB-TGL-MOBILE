@@ -14,7 +14,7 @@ import { HomeProps } from '@shared/model/types/navigation';
 import { CardUserBet, ModalError, ContainerFilterGame } from '@components/Layout';
 import { IconScroll, NavButton, Title, TypeGameButton } from '@components/UI';
 import { FlatList, NativeScrollEvent, NativeSyntheticEvent } from 'react-native';
-import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav } from './styles';
+import { ContainerTypeGame, RootContainer, Label, ContainerBets, ContainerNav, ContainerWarning } from './styles';
 
 const Home = ({ navigation }: HomeProps) => {
 
@@ -23,8 +23,8 @@ const Home = ({ navigation }: HomeProps) => {
 
     const { account } = user();
     const { sortBets } = useSort();
-    const { enableLoading, disableLoading } = loadingActions;
     const { updateBetsUser } = userActions;
+    const { enableLoading, disableLoading } = loadingActions;
     const { configSwitchGame, selectedGames } = useTypeGame({ multipleSelection: true });
 
     const userBets = useSelector<RootState, Bet[]>((state) => state.auth.data!.bets!);
@@ -54,10 +54,11 @@ const Home = ({ navigation }: HomeProps) => {
         if( userBets.length > 0 ) {
             let filter: Bet[] = [];
 
-            if( selectedGames[0].id === 0 ) {   // Nenhum filtro selecionado 
-                filter = [...userBets];                
+            if( selectedGames.length === 1 ) {   // Nenhum filtro selecionado 
+                filter = [...userBets];            
             } else {  // Existe filtro selecionado
                 const gamesID = selectedGames.map((game) => game.id);
+                console.log(gamesID);
                 filter = userBets.filter((bet) => {
                     const index = gamesID.indexOf(bet.game_id);
                     if( index !== -1 ) {
@@ -115,10 +116,10 @@ const Home = ({ navigation }: HomeProps) => {
                 </ContainerTypeGame>     
                 <ContainerBets>
                     {filterGames.length === 0 &&  ( 
-                        <>
+                        <ContainerWarning>
                             <Label>Nenhuma Aposta Encontrada</Label>
                             <Entypo name='emoji-sad' size={25} color={theme.text.gray100} />
-                        </>
+                        </ContainerWarning>
                     )}
                     {filterGames.length > 0 && 
                         <FlatList

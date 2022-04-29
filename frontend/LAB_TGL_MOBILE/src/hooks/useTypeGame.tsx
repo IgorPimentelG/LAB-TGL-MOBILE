@@ -56,9 +56,8 @@ const useTypeGame = (config?: Config) => {
         const game = typesGames.filter((item) => item.id === id)[0];
 
         if( config && config.multipleSelection ) { // Múltipla seleção
-            const isEnabled = verifyStatus(id);
 
-            console.log(isEnabled);
+            const isEnabled = verifyStatus(id);
 
             if( isEnabled ) {  // Desativar game
                 setSelectedGames((currentState) => {

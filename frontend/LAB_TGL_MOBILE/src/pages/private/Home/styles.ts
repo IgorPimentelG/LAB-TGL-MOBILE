@@ -17,6 +17,10 @@ export const ContainerBets = styled.View`
     width: 95%;
     height: 335px;
     margin: 15px 0;
+`;
+
+export const ContainerWarning = styled.View`
+    flex: 1;
     justify-content: center;
     align-items: center;
 `;
