@@ -28,6 +28,19 @@ import {
     Label, 
     ContainerBets
 } from './styles';
+import { NewBet } from '@shared/model/types/bets';
+
+const initialDataModalConfirm = {
+    isVisible: false,
+    message: '',
+    betID: 0,
+    data: {
+        numbers: [],
+        type: '',
+        price: 0,
+        color: ''
+    }
+}
 
 const Cart = ({ navigation }: CartProps ) => {
 
@@ -44,11 +57,7 @@ const Cart = ({ navigation }: CartProps ) => {
     const [total, setTotal] = useState(0);
     const [error, setError] = useState<string | null>(null);
     const [showIconScroll, setShowIconScroll] = useState(false);
-    const [showModalConfirm, setShowModalConfirm] = useState({
-        isVisible: false,
-        message: '',
-        betID: 0
-    });
+    const [showModalConfirm, setShowModalConfirm] = useState(initialDataModalConfirm);
 
     useLayoutEffect(() => {
         navigation.setOptions({
@@ -97,18 +106,23 @@ const Cart = ({ navigation }: CartProps ) => {
     }
 
     function cancelModalHandler() {
-        setShowModalConfirm({
-            isVisible: false,
-            message: '',
-            betID: 0
-        });
+        setShowModalConfirm(initialDataModalConfirm);
     }
 
-    function removeBetHandler(idBet: number) {
+    function removeBetHandler(bet: any) {
+
+        const game = searchGame(bet.game_id);
+
         setShowModalConfirm({
             isVisible: true,
             message: 'Deseja realmente remover o jogo do carrinho?',
-            betID: idBet
+            betID: bet.id,
+            data: {
+                numbers: bet.numbers,
+                type: game.type,
+                price: game.price,
+                color: game.color
+            }
         });
     }
 
@@ -128,9 +142,9 @@ const Cart = ({ navigation }: CartProps ) => {
     function onSave() {
         if( total >= games.min_cart_value! ) {
             setShowModalConfirm({
+                ...initialDataModalConfirm,
                 isVisible: true,
                 message: `Deseja realmente finalizar suas apostas no total de R$ ${formatPrice(total)}`,
-                betID: 0
             });
         } else {
             setError(
@@ -157,7 +171,14 @@ const Cart = ({ navigation }: CartProps ) => {
                 message={showModalConfirm.message}
                 onCancel={cancelModalHandler}
                 onConfirm={confirmModalHandler}
-            />
+            >
+                {showModalConfirm.betID !== 0 && <CardNewBet
+                    numbers={showModalConfirm.data.numbers}
+                    game={showModalConfirm.data.type}
+                    price={showModalConfirm.data.price}
+                    colorGame={showModalConfirm.data.color}
+                />}
+            </ModalConfirmation>
             <ModalError
                 isVisible={!!error}
                 onConfirm={confirmErrorHandler}
@@ -188,7 +209,7 @@ const Cart = ({ navigation }: CartProps ) => {
                                                         game={game.type}
                                                         price={game.price}
                                                         colorGame={game.color}
-                                                        onRemove={removeBetHandler.bind(null, item.id)}
+                                                        onRemove={removeBetHandler.bind(null, item)}
                                                     />
                                                 );
                                             }

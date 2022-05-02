@@ -8,7 +8,7 @@ const CardNewBet: React.FC<{
     price: number;
     game: string;
     colorGame: string;
-    onRemove: () => void
+    onRemove?: () => void
 }> = ({ numbers, price, game, colorGame, onRemove }) => {
 
     const numbersFormated = formatNumbers(numbers.map((item) => String(item)).join(','));
@@ -16,13 +16,13 @@ const CardNewBet: React.FC<{
 
     return(
         <Container>
-            <Touchable onPress={onRemove}>
+            { onRemove && <Touchable onPress={onRemove}>
                 <Ionicons
                     name='trash-outline'
                     size={25}
                     color={'#888888'}
                 />
-            </Touchable>
+            </Touchable>}
             <ContainerContent colorGame={colorGame}>
                 <Numbers>{numbersFormated}</Numbers>
                 <ContainerInfo>

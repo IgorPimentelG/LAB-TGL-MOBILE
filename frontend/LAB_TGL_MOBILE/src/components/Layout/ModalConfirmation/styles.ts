@@ -7,8 +7,8 @@ const Button = styled.TouchableOpacity`
 `;
 
 export const Container = styled.View<any>`
-    width: ${({screenWidth}) => screenWidth > 400 ? '50%' : '90%'};
-    padding: 20px;
+    width: ${({screenWidth}) => screenWidth > 400 ? '50%' : '80%'};
+    padding: 20px 10px;
     justify-content: center;
     align-items: center;
     background-color: #FFF;
@@ -19,6 +19,10 @@ export const Container = styled.View<any>`
 export const ContainerOptions = styled.View`
     flex-direction: row;
     justify-content: space-between;
+`;
+
+export const ContainerChildren = styled.View`
+    margin-top: -15px;
 `;
 
 export const ButtonConfirm = styled(Button)`

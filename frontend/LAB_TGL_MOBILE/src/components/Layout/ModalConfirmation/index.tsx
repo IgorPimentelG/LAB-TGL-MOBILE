@@ -1,14 +1,15 @@
 import { Title } from '@components/UI';
-import { Modal, useWindowDimensions } from 'react-native';
+import { Modal, useWindowDimensions, View } from 'react-native';
 import { Text, RootContainer } from '../ModalError/styles';
-import { ButtonConfirm, Container, ContainerOptions, ButtonCancel, LabelButton } from './styles';
+import { ButtonConfirm, Container, ContainerOptions, ButtonCancel, LabelButton, ContainerChildren } from './styles';
 
 const ModalConfirmation: React.FC<{
+    children?: any;
     isVisible: boolean;
     message: string;
     onCancel: () => void;
     onConfirm: () => void;
-}> = ({ isVisible, message, onCancel, onConfirm }) => {
+}> = ({ children, isVisible, message, onCancel, onConfirm }) => {
 
     const { width } = useWindowDimensions();
 
@@ -18,6 +19,11 @@ const ModalConfirmation: React.FC<{
                 <Container screenWidth={width}>
                     <Title>Atenção</Title>
                     <Text>{message}</Text>
+                   { children &&
+                        <ContainerChildren>
+                            {children}
+                        </ContainerChildren>
+                    }
                     <ContainerOptions>
                         <ButtonCancel onPress={onCancel}>
                             <LabelButton>Cancelar</LabelButton>
