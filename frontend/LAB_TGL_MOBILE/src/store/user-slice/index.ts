@@ -32,6 +32,17 @@ const UserSlice = createSlice({
             };
         },
 
+        updateUser: (state, action) => {
+            return {
+                ...state,
+               data: {
+                   ...state.data!,
+                   name: action.payload.name,
+                   email: action.payload.email
+               } 
+            }
+        },
+
         logout: () => {
             AsyncStorage.clear();
             return {

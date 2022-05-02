@@ -12,10 +12,17 @@ const store = configureStore({
         loading: LoadingSlice.reducer,
         cart: CartSlice.reducer
     },
-    devTools: true,
-    enhancers: [reactotron.createEnhancer!()]
+    middleware: (getDefaultMiddleware) => getDefaultMiddleware({
+        immutableCheck: false,
+        serializableCheck: false
+    })
 });
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 export default store;
+
+/*
+* devTools: true,
+* enhancers: [reactotron.createEnhancer!()]
+*/

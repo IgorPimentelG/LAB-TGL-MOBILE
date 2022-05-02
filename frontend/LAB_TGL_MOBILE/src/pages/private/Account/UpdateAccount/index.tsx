@@ -11,6 +11,7 @@ import { FieldValues, useForm } from 'react-hook-form';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavButtonType } from '@shared/model/enums/form';
 import { ModalConfirmation, ModalError } from '@components/Layout';
+import { userActions } from '@store/user-slice';
 
 const UpdateAccount = () => {
 
@@ -24,6 +25,7 @@ const UpdateAccount = () => {
     const { findUser } = auth();
     const { updateMyUser } = user();
     const { enableLoading, disableLoading } = loadingActions;
+    const { updateUser } = userActions;
 
     const [error, setError] = useState<string | null>();
     const [showModalConfirm, setShowModalConfirm] = useState({
@@ -76,6 +78,7 @@ const UpdateAccount = () => {
                 
                 if( emailResponse.data.id === userData.id ) {
                     await updateMyUser({ name, email });
+                    dispatch(updateUser({ name, email }));
                 } else {
                     setError('E-mail não disponível');
                 }

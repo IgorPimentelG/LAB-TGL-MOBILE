@@ -8,6 +8,7 @@ import Theme from '@theme/index';
 import Routes from '@routes/routes';
 import Loading from '@components/UI/Loading';
 import { Provider } from 'react-redux';
+import { LogBox } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 
 export default function App() {
@@ -15,8 +16,9 @@ export default function App() {
   useEffect(() => {
       if(__DEV__) {
         reactotron.connect();
-      }  
-  })
+      } 
+      LogBox.ignoreLogs(["VirtualizedLists should never be nested"])
+  }, [])
 
   return (
     <React.Fragment>

@@ -46,8 +46,7 @@ const SignUp = ({ navigation }: SignUpProps) => {
            await createUser(userData);
            navigation.replace('SignIn');
         } catch(error: any) {
-            console.log(error);
-            setError(error.message);
+            setError('E-mail já cadastrado');
         }
 
         dispatch(disableLoading());

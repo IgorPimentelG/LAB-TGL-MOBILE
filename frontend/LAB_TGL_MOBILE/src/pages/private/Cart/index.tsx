@@ -175,9 +175,8 @@ const Cart = ({ navigation }: CartProps ) => {
 
                             {cart.cart.length !== 0 && (
                                 <ContainerBets lengthBets={cart.cart.length}>
-                                    <ScrollView horizontal contentContainerStyle={{ width: '95%'}}>
                                         <FlatList
-                                            key={Date.now()}
+                                            nestedScrollEnabled
                                             data={cart.cart}
                                             onScroll={scrollListener}
                                             keyExtractor={(item) => item.id.toString()}
@@ -195,7 +194,6 @@ const Cart = ({ navigation }: CartProps ) => {
                                             }
                                         }
                                         />
-                                    </ScrollView>
                                 </ContainerBets>
                             )}
                             { showIconScroll && (

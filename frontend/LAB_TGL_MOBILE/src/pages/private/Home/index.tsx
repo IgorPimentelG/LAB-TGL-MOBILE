@@ -20,7 +20,8 @@ import {
     Label, 
     ContainerBets, 
     ContainerNav, 
-    ContainerWarning } from './styles';
+    ContainerWarning 
+} from './styles';
 
 const Home = ({ navigation }: HomeProps) => {
 
@@ -62,7 +63,7 @@ const Home = ({ navigation }: HomeProps) => {
 
             if( selectedGames.length === 1 ) {   // Nenhum filtro selecionado 
                 filter = [...userBets];            
-            } else {  // Existe filtro selecionado
+            } else {                             // Existe filtro selecionado
                 const gamesID = selectedGames.map((game) => game.id);
                 filter = userBets.filter((bet) => {
                     const index = gamesID.indexOf(bet.game_id);
@@ -72,7 +73,7 @@ const Home = ({ navigation }: HomeProps) => {
                 });
             }
             setFilterGames(() => {
-                if( filter.length > 2 ) {
+                if( filter.length > 3 ) {
                     setShowIconScroll(true);
                 } else {
                     setShowIconScroll(false);
@@ -109,7 +110,7 @@ const Home = ({ navigation }: HomeProps) => {
                 onConfirm={onConfirmModal}
                 message={error!}
             />
-            <ScrollView>
+            <ScrollView nestedScrollEnabled>
                 <RootContainer>
                     <Title>RECENT GAMES</Title>
                     <ContainerTypeGame>
@@ -128,15 +129,13 @@ const Home = ({ navigation }: HomeProps) => {
                             </ContainerWarning>
                         )}
                         {filterGames.length > 0 && 
-                            <ScrollView horizontal contentContainerStyle={{width: '100%'}}>
-                                <FlatList
-                                    onScroll={scrollListener}
-                                    keyExtractor={(item) => item.id.toString()}
-                                    data={filterGames}
-                                    contentContainerStyle={{ flexGrow: 1 }}
-                                    renderItem={({item}) => <CardUserBet data={item}/>}
-                                />
-                            </ScrollView>
+                            <FlatList
+                                nestedScrollEnabled
+                                onScroll={scrollListener}
+                                keyExtractor={(item) => item.id.toString()}
+                                data={filterGames}
+                                renderItem={({item}) => <CardUserBet data={item}/>}
+                            />
                         }
                     </ContainerBets>
                     {showIconScroll && <IconScroll/>}
